@@ -59,8 +59,8 @@ export function Login() {
     >
       {/* begin::Heading */}
       <div className='text-center mb-11'>
-        <h1 className='text-gray-900 fw-bolder mb-3'>Laundry App</h1>
-        <div className='text-gray-500 fw-semibold fs-6'>Sign In</div>
+        <h1 className='text-gray-900 fw-bolder mb-3'>LAUNDRY APP</h1>
+        <div className='text-gray-500 fw-semibold fs-6'>PLATFORM LOGIN</div>
       </div>
       {/* begin::Heading */}
 
