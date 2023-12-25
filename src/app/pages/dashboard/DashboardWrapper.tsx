@@ -15,12 +15,24 @@ import {
   CardsWidget20,
   ListsWidget26,
   EngageWidget10,
+  TablesWidget1,
+TablesWidget2,
+TablesWidget3,
+TablesWidget4,
+
+TablesWidget6,
+TablesWidget7,
+TablesWidget8,
+TablesWidget9,
+TablesWidget11,
+TablesWidget12,
+TablesWidget13,
 } from '../../../_metronic/partials/widgets'
+
 
 const DashboardPage: FC = () => (
   <>
 
-    
     {/* begin::Row */}
     <div className='row gy-5 g-xl-8'>
       <div className='col-xl-4'>
@@ -47,6 +59,14 @@ const DashboardPage: FC = () => (
       <div className='col-xxl-8'>
         <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8' />
       </div>
+      <div className='col-xl-8'>
+          <TablesWidget1 className='card-xl-stretch mb-xl-8'></TablesWidget1>
+        </div>
+        <div className='col-xl-8'>
+          <TablesWidget2 className='card-xl-stretch mb-xl-8'></TablesWidget2>
+        </div>
+
+
     </div>
   </>
 )
