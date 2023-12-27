@@ -69,7 +69,7 @@ const ItemDetail : FC = () => {
                                 <input
                                 type='textbox'
                                 className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                                placeholder='Enter Sort No'
+                                placeholder='Enter Short Description'
                                 />
                             </div>
                         </div>
