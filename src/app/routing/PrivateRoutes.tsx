@@ -2,8 +2,25 @@ import {lazy, FC, Suspense} from 'react'
 import {Route, Routes, Navigate} from 'react-router-dom'
 import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
-import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
-import {Dashboard} from '../pages/dashboard/Dashboard'
+import {Dashboard} from '../pages/dashboard/Dashboard';
+import UserRoles from '../pages/admin/userRoles/UserRoles';
+import UserRoleDetail from '../pages/admin/userRoles/UserRoleDetail';
+import AdminUserList from '../pages/admin/adminUsers/UserList';
+import AdminUserDetail from '../pages/admin/adminUsers/UserDetail';
+import CurrencyList from '../pages/masters/currency/CurrencyList';
+import CurrencyDetail from '../pages/masters/currency/CurrencyDetail';
+import CountryList from '../pages/masters/country/CountryList';
+import CountryDetail from '../pages/masters/country/CountryDetail';
+import StateList from '../pages/masters/state/StateList';
+import StateDetail from '../pages/masters/state/StateDetail';
+import CityList from '../pages/masters/city/CityList';
+import CityDetail from '../pages/masters/city/CityDetail';
+import AreaList from '../pages/masters/area/AreaList';
+import AreaDetail from '../pages/masters/area/AreaDetail';
+import CategoryList from '../pages/masters/category/CategoryList';
+import CategoryDetail from '../pages/masters/category/CategoryDetail';
+import ItemList from '../pages/masters/items/ItemList';
+import ItemDetail from '../pages/masters/items/ItemDetail';
 import {MenuTestPage} from '../pages/MenuTestPage'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
@@ -24,6 +41,29 @@ const PrivateRoutes = () => {
         <Route path='auth/*' element={<Navigate to='/dashboard' />} />
         {/* Pages */}
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path='userRoles' element={<UserRoles />} />
+        <Route path='userRoles/:roleId' element={<UserRoleDetail />} />
+        <Route path='adminUsers' element={<AdminUserList />} />
+        <Route path='adminUsers/:userId' element={<AdminUserDetail />} />
+        <Route path='currency' element={<CurrencyList />} />
+        <Route path='currency/:currencyId' element={<CurrencyDetail />} />
+        <Route path='country' element={<CountryList />} />
+        <Route path='country/:countryId' element={<CountryDetail />} />
+        <Route path='state' element={<StateList />} />
+        <Route path='state/:stateId' element={<StateDetail />} />
+        <Route path='city' element={<CityList />} />
+        <Route path='city/:cityId' element={<CityDetail />} />
+        <Route path='area' element={<AreaList />} />
+        <Route path='area/:areaId' element={<AreaDetail />} />
+        <Route path='category' element={<CategoryList />} />
+        <Route path='category/:categoryId' element={<CategoryDetail />} />
+        <Route path='item' element={<ItemList />} />
+        <Route path='item/:itemId' element={<ItemDetail />} />
+
+
+
+
+
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
         {/* Lazy Modules */}
