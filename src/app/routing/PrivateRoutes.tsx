@@ -21,6 +21,13 @@ import CategoryList from '../pages/masters/category/CategoryList';
 import CategoryDetail from '../pages/masters/category/CategoryDetail';
 import ItemList from '../pages/masters/items/ItemList';
 import ItemDetail from '../pages/masters/items/ItemDetail';
+import CompanyInfo from '../pages/settings/CompanyInfo';
+import AppSettings from '../pages/settings/AppSettings';
+import RateSettings from '../pages/settings/RateSettings';
+import Cancellations from '../pages/settings/Cancellations';
+import TaxList from '../pages/settings/tax/TaxList';
+import TaxDetail from '../pages/settings/tax/TaxDetail';
+import CurrencyRates from '../pages/settings/CurrencyRates';
 import {MenuTestPage} from '../pages/MenuTestPage'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
@@ -59,10 +66,13 @@ const PrivateRoutes = () => {
         <Route path='category/:categoryId' element={<CategoryDetail />} />
         <Route path='item' element={<ItemList />} />
         <Route path='item/:itemId' element={<ItemDetail />} />
-
-
-
-
+        <Route path='settings/companyInfo' element={<CompanyInfo />} />
+        <Route path='settings/app' element={<AppSettings />} />
+        <Route path='settings/rate' element={<RateSettings />} />
+        <Route path='settings/cancellation' element={<Cancellations />} />
+        <Route path='settings/tax' element={<TaxList />} />
+        <Route path='settings/tax/:taxId' element={<TaxDetail />} />
+        <Route path='settings/currencyRates' element={<CurrencyRates />} />
 
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />

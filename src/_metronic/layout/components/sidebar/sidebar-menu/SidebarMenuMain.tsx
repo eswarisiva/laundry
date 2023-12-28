@@ -27,6 +27,16 @@ const SidebarMenuMain = () => {
          <SidebarMenuItem to='/category' title='Category' fontIcon='bi-layers' />
          <SidebarMenuItem to='/item' title='Items' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub>
+
+      <SidebarMenuItemWithSub to='' icon='gear' title='SETTINGS' fontIcon='bi-layers'>
+          <SidebarMenuItem to='/settings/companyInfo' title='Company' fontIcon='bi-layers' />
+          <SidebarMenuItem to='/settings/app' title='App Settings' fontIcon='bi-layers' />
+          <SidebarMenuItem to='/settings/rate' title='Rate Settings' fontIcon='bi-layers' />
+          <SidebarMenuItem to='/settings/cancellation' title='Cancellations' fontIcon='bi-layers' />
+          <SidebarMenuItem to='/settings/tax' title='Tax' fontIcon='bi-layers' />
+          <SidebarMenuItem to='/settings/currencyRates' title='Currency Rates' fontIcon='bi-layers' />
+      </SidebarMenuItemWithSub>  
+
       
       <SidebarMenuItem to='/crafted/pages/profile/overview' title='MASTERS'  />
           <SidebarMenuItem to='/crafted/pages/profile/projects' title='SETTINGS'  />
