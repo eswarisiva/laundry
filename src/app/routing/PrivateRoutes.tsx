@@ -28,7 +28,9 @@ import Cancellations from '../pages/settings/Cancellations';
 import TaxList from '../pages/settings/tax/TaxList';
 import TaxDetail from '../pages/settings/tax/TaxDetail';
 import CurrencyRates from '../pages/settings/CurrencyRates';
-import {MenuTestPage} from '../pages/MenuTestPage'
+import AgentList from '../pages/agents/AgentList';
+import {MenuTestPage} from '../pages/MenuTestPage';
+import AgentProfile from '../pages/agents/profile/AgentProfile';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -73,7 +75,8 @@ const PrivateRoutes = () => {
         <Route path='settings/tax' element={<TaxList />} />
         <Route path='settings/tax/:taxId' element={<TaxDetail />} />
         <Route path='settings/currencyRates' element={<CurrencyRates />} />
-
+        <Route path='agency/list' element={<AgentList />} />
+        <Route path='agency/profile' element={<AgentProfile />}  />
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
         {/* Lazy Modules */}

@@ -35,7 +35,11 @@ const SidebarMenuMain = () => {
           <SidebarMenuItem to='/settings/cancellation' title='Cancellations' fontIcon='bi-layers' />
           <SidebarMenuItem to='/settings/tax' title='Tax' fontIcon='bi-layers' />
           <SidebarMenuItem to='/settings/currencyRates' title='Currency Rates' fontIcon='bi-layers' />
-      </SidebarMenuItemWithSub>  
+      </SidebarMenuItemWithSub> 
+
+      <SidebarMenuItemWithSub to='' icon='gear' title='AGENCY' fontIcon='bi-layers'>
+        <SidebarMenuItem to='/agency/list' title='Agency List' fontIcon='bi-layers' />
+      </SidebarMenuItemWithSub>
 
       
       <SidebarMenuItem to='/crafted/pages/profile/overview' title='MASTERS'  />

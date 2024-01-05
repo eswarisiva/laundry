@@ -59,8 +59,13 @@ export function Login() {
     >
       {/* begin::Heading */}
       <div className='text-center mb-11'>
-        <h1 className='text-gray-900 fw-bolder mb-3'>LAUNDRY APP</h1>
-        <div className='text-gray-500 fw-semibold fs-6'>PLATFORM LOGIN</div>
+        <img
+            alt='Logo'
+            src={toAbsoluteUrl('media/logos/LOGO.png')}
+            className='h-50px mb-10 app-sidebar-logo-default'
+          />
+        <h1 className='text-gray-900 fw-bolder mb-3'>Welcome back</h1>
+        <div className='text-gray-500 fw-semibold fs-6'>Welcome Back! Please enter your details </div>
       </div>
       {/* begin::Heading */}
 
@@ -125,7 +130,7 @@ export function Login() {
           className='btn btn-primary'
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className='indicator-label'>Continue</span>}
+          {!loading && <span className='indicator-label'>SIGNIN</span>}
           {loading && (
             <span className='indicator-progress' style={{display: 'block'}}>
               Please wait...
