@@ -11,6 +11,7 @@ type Props = {
   titleColor?: string
   description: string
   descriptionColor?: string
+  url?: string
 }
 
 const StatisticsWidget5: React.FC<Props> = ({
@@ -22,11 +23,13 @@ const StatisticsWidget5: React.FC<Props> = ({
   titleColor,
   description,
   descriptionColor,
+  url
+  
 }) => {
   return (
-    <a href='#' className={`card bg-${color} hoverable ${className}`}>
+    <a href={url ? url :'#'} className={`card bg-${color} hoverable ${className}`}>
       <div className='card-body'>
-        <KTIcon iconName={svgIcon} className={`text-${iconColor} fs-3x ms-n1`} />
+      { svgIcon && <KTIcon iconName={svgIcon} className={`text-${iconColor} fs-3x ms-n1`} /> }
 
         <div className={`text-${titleColor} fw-bold fs-2 mb-2 mt-5`}>{title}</div>
 

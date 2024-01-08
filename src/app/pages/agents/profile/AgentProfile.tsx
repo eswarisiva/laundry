@@ -1,101 +1,101 @@
-import {FC, useRef, useState, useEffect} from 'react';
-import { StepperComponent } from '../../../../_metronic/assets/ts/components';
-import { KTIcon } from '../../../../_metronic/helpers';
+import {FC, useState } from 'react';
 import Company from './include/Company';
+import Address from './include/Address';
+import Services from './include/Services';
+import Working from './include/Working'; 
+import Account from './include/Account'; 
+import { PageTitle } from '../../../../_metronic/layout/core';
 
 const AgentProfile : FC = () => {
-    const stepperRef = useRef<HTMLDivElement | null>(null);
-    const [ stepper, setStepper ] = useState<StepperComponent | null>(null);
+    const [ steps, setSteps ] = useState(1);
 
-    const loadStepper = () => {
-        setStepper(StepperComponent.createInsance(stepperRef.current as HTMLDivElement))
+   
+     const nextStep = (step : any ) => {
+      setSteps(step);
     }
 
-    useEffect(() => {
-        if (!stepperRef.current) {
-          return
-        }
-    
-        loadStepper()
-    }, [stepperRef])
+  return (
+    <>
+      <PageTitle>UPDATE AGENT</PageTitle>
+      <div className='card'>
+        <div className='card-body'>
+          <div
+            className='stepper stepper-links d-flex flex-column pt-15'
+          >
+            <div className='stepper-nav mb-10'>
+              <div onClick={(e) => nextStep(1)} className={`stepper-item ${steps === 1 ? `current` : ``}`} data-kt-stepper-element='nav'>
+                <h3 className='stepper-title'>1. Company</h3>
+              </div>
 
-    return (
-        <>
-           <div className='card'>
-               <div className='card-body'>
-        <div
-          ref={stepperRef}
-          className='stepper stepper-links d-flex flex-column pt-15'
-          id='kt_create_account_stepper'
-        >
-          <div className='stepper-nav mb-5'>
-            <div className='stepper-item current' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Company</h3>
-            </div>
+              <div onClick={(e) => nextStep(2)} className={`stepper-item ${steps === 2 ? `current` : ``}`} data-kt-stepper-element='nav'>
+                <h3 className='stepper-title'>2. Address</h3>
+              </div>
 
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Address</h3>
-            </div>
+              <div onClick={(e) => nextStep(3)} className={`stepper-item ${steps === 3 ? `current` : ``}`} data-kt-stepper-element='nav'>
+                <h3 className='stepper-title'>3. Services</h3>
+              </div>
 
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Services</h3>
-            </div>
+              <div onClick={(e) => nextStep(4)} className={`stepper-item ${steps === 4 ? `current` : ``}`} data-kt-stepper-element='nav'>
+                <h3 className='stepper-title'>4. Working Hours</h3>
+              </div>
 
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Working Hours</h3>
+              <div onClick={(e) => nextStep(5)} className={`stepper-item ${steps === 5 ? `current` : ``}`} data-kt-stepper-element='nav'>
+                <h3 className='stepper-title'>5. Account</h3>
+              </div>
             </div>
+            {steps === 1 &&
+              <div className='row g-5 g-xl-8' >
+                <Company />
+              </div>
+            }
 
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Account</h3>
-            </div>
+            {steps === 2 &&
+              <div className='row g-5 g-xl-8'  >
+                <Address />
+              </div>
+
+            }
+            {steps === 3 &&
+              <div className='row g-5 g-xl-8' >
+                <Services />
+              </div>
+            }
+            {steps === 4 &&
+              <div className='row g-5 g-xl-8'>
+                <Working />
+              </div>
+            }
+            {steps === 5 &&
+              <div className='current row g-5 g-xl-8'>
+                <Account />
+              </div>
+            }
+
+            {steps === 5 &&
+              <div className='d-flex flex-stack pt-15'>
+                <div className='mr-2'>
+                  <button
+                    type='button'
+                    className='btn btn-lg btn-light-primary me-3'
+                  >
+
+                    Cancel
+                  </button>
+                </div>
+
+                <div>
+                  <button type='submit' className='btn btn-lg btn-primary me-3'>
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+            }
           </div>
-       
-                <div className='current row g-5 g-xl-8' data-kt-stepper-element='content'>
-                    <Company />
-                </div>
-
-                <div data-kt-stepper-element='content'>
-                
-                </div>
-
-                <div data-kt-stepper-element='content'>
-                  
-                </div>
-
-                <div data-kt-stepper-element='content'>
-                  
-                </div>
-
-                <div data-kt-stepper-element='content'>
-                 
-                </div>
-
-                <div className='d-flex flex-stack pt-15'>
-                  <div className='mr-2'>
-                    <button
-                      type='button'
-                      className='btn btn-lg btn-light-primary me-3'
-                      data-kt-stepper-action='previous'
-                    >
-                      <KTIcon iconName='arrow-left' className='fs-4 me-1' />
-                      Back
-                    </button>
-                  </div>
-
-                  <div>
-                    <button type='submit' className='btn btn-lg btn-primary me-3'>
-                      <span className='indicator-label'>
-                       <KTIcon iconName='arrow-right' className='fs-3 ms-2 me-0' />
-                      </span>
-                    </button>
-                  </div>
-                </div>
-          
         </div>
-               </div>
-           </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }    
 
 export default AgentProfile;
