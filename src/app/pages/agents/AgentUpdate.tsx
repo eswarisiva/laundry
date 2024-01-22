@@ -1,11 +1,13 @@
 import {FC} from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
-    StatisticsWidget5,
-    StatisticsWidget1
+    StatisticsWidget5 
 } from '../../../_metronic/partials/widgets';
 
 const AgentUpdate : FC = () => {
+
+   const  { agentId } = useParams();
    return (
     <>
            <div className='row g-5 g-xl-8'>
@@ -20,7 +22,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agency/profile/123`}  
+                           url={`/agency/${agentId}/profile`}  
                        />
                    </div>
 
@@ -34,6 +36,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agency/${agentId}/locationCharges`} 
                        />
                    </div>
 
@@ -61,6 +64,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agency/${agentId}/users`} 
                        />
                    </div>
 

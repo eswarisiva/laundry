@@ -32,6 +32,9 @@ import AgentList from '../pages/agents/AgentList';
 import {MenuTestPage} from '../pages/MenuTestPage';
 import AgentProfile from '../pages/agents/profile/AgentProfile';
 import AgentUpdate from '../pages/agents/AgentUpdate';
+import LocationCharges from '../pages/agents/LocationCharges';
+import AgentUsers from '../pages/agents/users/Users';
+import AgentUserDetail from '../pages/agents/users/UserDetail';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -77,7 +80,10 @@ const PrivateRoutes = () => {
         <Route path='settings/tax/:taxId' element={<TaxDetail />} />
         <Route path='settings/currencyRates' element={<CurrencyRates />} />
         <Route path='agency/list' element={<AgentList />} />
-        <Route path='agency/profile/:agentId' element={<AgentProfile />}  />
+        <Route path='agency/:agentId/profile' element={<AgentProfile />}  />
+        <Route path='agency/:agentId/locationCharges' element={<LocationCharges />}  />
+        <Route path='agency/:agentId/users' element={<AgentUsers />}  />
+        <Route path='agency/:agentId/users/:userId' element={<AgentUserDetail />}  />
         <Route path='agency/:agentId' element={<AgentUpdate />}  />
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
