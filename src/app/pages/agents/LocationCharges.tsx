@@ -47,97 +47,97 @@ const LocationCharges : FC = () => {
 
 
         <div className="modal fade" tabIndex={-1} id="kt_modal_1">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Area 1 <br/> <label style={{fontSize : '0.75rem'}}>Country Name / City Name</label></h5>
-                            
-                            <div
-                                className="btn btn-icon btn-sm btn-primary ms-2"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            >
-<KTSVG
-            path="media/icons/duotune/arrows/arr061.svg"
-            className="svg-icon svg-icon-2x"
-          />
-                            </div>
-                        </div>
-                        <div className="modal-body">
-                          <h3 className="modal-title mb-4">Update Charges</h3>
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Area 1 <br /> <label style={{ fontSize: '0.75rem' }}>Country Name / City Name</label></h5>
 
-                            <div className='row '>
-                                <label className='col-lg-12 col-form-label required fs-6'>Min Order Amount</label>
-
-                                <div className='col-lg-12'>
-                                    <div className='row'>
-                                        <div className='col-lg-12 fv-row'>
-                                            <input
-                                                type='text'
-                                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                                                placeholder='Enter Amount'
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='row '>
-                                <label className='col-lg-12 col-form-label required fw-bold fs-6'>Type</label>
-
-                                <div className='row col-lg-12'>
-                                    <div className='col-lg-6'>
-                                        <div className="form-check form-check-custom form-check-solid">
-                                            <input className="form-check-input" type="radio" value="" id="flexRadioDefault" />
-                                            <label className="form-check-label" >
-                                                Free
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div className='col-lg-6'>
-                                        <div className="form-check form-check-custom form-check-solid">
-                                            <input className="form-check-input" type="radio" value="" id="flexRadioDefault" />
-                                            <label className="form-check-label" >
-                                                Paid
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='row '>
-                                <label className='col-lg-12 col-form-label required fs-6'>Delivery Charges</label>
-
-                                <div className='col-lg-12'>
-                                    <div className='row'>
-                                        <div className='col-lg-12 fv-row'>
-                                            <input
-                                                type='text'
-                                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                                                placeholder='Enter Amount'
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-light"
-                                data-bs-dismiss="modal"
-                            >
-                                Discard
-                            </button>
-                            <button type="button" className="btn btn-primary">
-                                Save
-                            </button>
+                        <div
+                            className="btn btn-icon btn-sm btn-primary ms-2"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <KTSVG
+                                path="media/icons/duotune/arrows/arr061.svg"
+                                className="svg-icon svg-icon-2x"
+                            />
                         </div>
                     </div>
+                    <div className="modal-body">
+                        <h3 className="modal-title mb-4">Update Charges</h3>
+
+                        <div className='row '>
+                            <label className='col-lg-12 col-form-label required fs-6'>Min Order Amount</label>
+
+                            <div className='col-lg-12'>
+                                <div className='row'>
+                                    <div className='col-lg-12 fv-row'>
+                                        <input
+                                            type='text'
+                                            className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                            placeholder='Enter Amount'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='row '>
+                            <label className='col-lg-12 col-form-label required fw-bold fs-6'>Type</label>
+
+                            <div className='row col-lg-12'>
+                                <div className='col-lg-6'>
+                                    <div className="form-check form-check-custom form-check-solid">
+                                        <input className="form-check-input" type="radio" value="" id="flexRadioDefault" />
+                                        <label className="form-check-label" >
+                                            Free
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <div className="form-check form-check-custom form-check-solid">
+                                        <input className="form-check-input" type="radio" value="" id="flexRadioDefault" />
+                                        <label className="form-check-label" >
+                                            Paid
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='row '>
+                            <label className='col-lg-12 col-form-label required fs-6'>Delivery Charges</label>
+
+                            <div className='col-lg-12'>
+                                <div className='row'>
+                                    <div className='col-lg-12 fv-row'>
+                                        <input
+                                            type='text'
+                                            className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                            placeholder='Enter Amount'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div className="modal-footer">
+                        <button
+                            type="button"
+                            className="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Discard
+                        </button>
+                        <button type="button" className="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
                 </div>
+            </div>
         </div>    
 
          

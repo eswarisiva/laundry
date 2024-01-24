@@ -38,7 +38,7 @@ const SidebarMenuMain = () => {
       </SidebarMenuItemWithSub> 
 
       <SidebarMenuItemWithSub to='' icon='gear' title='AGENCY' fontIcon='bi-layers'>
-        <SidebarMenuItem to='/agency/list' title='Agency List' fontIcon='bi-layers' />
+        <SidebarMenuItem to='/agent/list' title='Agency List' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub>
 
       

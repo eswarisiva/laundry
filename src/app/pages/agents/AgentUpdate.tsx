@@ -22,7 +22,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agency/${agentId}/profile`}  
+                           url={`/agent/${agentId}/profile`}  
                        />
                    </div>
 
@@ -36,7 +36,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agency/${agentId}/locationCharges`} 
+                           url={`/agent/${agentId}/locationCharges`} 
                        />
                    </div>
 
@@ -64,7 +64,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agency/${agentId}/users`} 
+                           url={`/agent/${agentId}/users`} 
                        />
                    </div>
 
@@ -78,6 +78,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/${agentId}/subscriptions`} 
                        />
                    </div>
 
@@ -91,6 +92,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/${agentId}/items`}  
                        />
                    </div>
 
@@ -104,6 +106,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/${agentId}/wallet`} 
                        />
                    </div>
 
@@ -117,6 +120,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/${agentId}/orders`}  
                        />
                    </div>
 
@@ -130,6 +134,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/${agentId}/stats`}  
                        />
                    </div>
 

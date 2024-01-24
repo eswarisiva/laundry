@@ -3,7 +3,7 @@ import { PageTitle } from '../../../../_metronic/layout/core';
 import { KTIcon } from '../../../../_metronic/helpers';
 import { toAbsoluteUrl } from '../../../../_metronic/helpers'; 
 
-const Users : FC = () => {
+const AgentUsers : FC = () => {
     return  (
         <>
             <PageTitle>USERS</PageTitle>
@@ -52,7 +52,7 @@ const Users : FC = () => {
                                     <td>Active</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>
-                                        <a href='/~agency/1234/users/12' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                        <a href='/agent/1234/users/12' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                             <KTIcon iconName='pencil' className='fs-3' />
                                         </a>
                                         <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
@@ -74,4 +74,4 @@ const Users : FC = () => {
     )
 }
 
-export default Users;
+export default AgentUsers;

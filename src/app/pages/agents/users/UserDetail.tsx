@@ -4,7 +4,7 @@ import PersonalDetail from './include/PersonalDetail';
 import Permission from './include/Permission';
 
 
-const UserDetail : FC = () => {
+const AgentUserDetail : FC = () => {
 
     const [ steps, setSteps ] = useState(1);
 
@@ -51,4 +51,4 @@ const UserDetail : FC = () => {
     )
 }    
 
-export default UserDetail;
+export default AgentUserDetail;

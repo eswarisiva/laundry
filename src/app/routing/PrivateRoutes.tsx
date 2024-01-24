@@ -35,6 +35,11 @@ import AgentUpdate from '../pages/agents/AgentUpdate';
 import LocationCharges from '../pages/agents/LocationCharges';
 import AgentUsers from '../pages/agents/users/Users';
 import AgentUserDetail from '../pages/agents/users/UserDetail';
+import AgentWallet from '../pages/agents/wallet/Wallet';
+import AgentStatistics from '../pages/agents/Statistics';
+import AgentOrders from '../pages/agents/Orders';
+import AgentItems from '../pages/agents/AgentItems';
+import AgentSubscriptions from '../pages/agents/Subscriptions';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -79,12 +84,17 @@ const PrivateRoutes = () => {
         <Route path='settings/tax' element={<TaxList />} />
         <Route path='settings/tax/:taxId' element={<TaxDetail />} />
         <Route path='settings/currencyRates' element={<CurrencyRates />} />
-        <Route path='agency/list' element={<AgentList />} />
-        <Route path='agency/:agentId/profile' element={<AgentProfile />}  />
-        <Route path='agency/:agentId/locationCharges' element={<LocationCharges />}  />
-        <Route path='agency/:agentId/users' element={<AgentUsers />}  />
-        <Route path='agency/:agentId/users/:userId' element={<AgentUserDetail />}  />
-        <Route path='agency/:agentId' element={<AgentUpdate />}  />
+        <Route path='agent/list' element={<AgentList />} />
+        <Route path='agent/:agentId/profile' element={<AgentProfile />}  />
+        <Route path='agent/:agentId/locationCharges' element={<LocationCharges />}  />
+        <Route path='agent/:agentId/users' element={<AgentUsers />}  />
+        <Route path='agent/:agentId/users/:userId' element={<AgentUserDetail />}  />
+        <Route path='agent/:agentId' element={<AgentUpdate />}  />
+        <Route path='agent/:agentId/wallet' element={<AgentWallet />}  />
+        <Route path='agent/:agentId/stats' element={<AgentStatistics />}  />
+        <Route path='agent/:agentId/orders' element={<AgentOrders />}  />
+        <Route path='agent/:agentId/items' element={<AgentItems />}  />
+        <Route path='agent/:agentId/subscriptions' element={<AgentSubscriptions />}  />
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
         {/* Lazy Modules */}
