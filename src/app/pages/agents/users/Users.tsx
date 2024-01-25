@@ -52,7 +52,7 @@ const AgentUsers : FC = () => {
                                     <td>Active</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>
-                                        <a href='/agent/1234/users/12' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                        <a href='/agent/user?agentId=12?userId=12' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                             <KTIcon iconName='pencil' className='fs-3' />
                                         </a>
                                         <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>

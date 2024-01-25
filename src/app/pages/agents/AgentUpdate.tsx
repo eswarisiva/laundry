@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import { useParams } from 'react-router-dom';
+import { useSearchParams  } from 'react-router-dom';
 
 import {
     StatisticsWidget5 
@@ -7,7 +7,7 @@ import {
 
 const AgentUpdate : FC = () => {
 
-   const  { agentId } = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
    return (
     <>
            <div className='row g-5 g-xl-8'>
@@ -22,7 +22,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/profile`}  
+                           url={`/agent/profile?agentId=${searchParams.get('agentId')}`}  
                        />
                    </div>
 
@@ -36,7 +36,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/locationCharges`} 
+                           url={`/agent/locationCharges?agentId=${searchParams.get('agentId')}`} 
                        />
                    </div>
 
@@ -64,7 +64,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/users`} 
+                           url={`/agent/users?agentId=?agentId=${searchParams.get('agentId')}`} 
                        />
                    </div>
 
@@ -78,7 +78,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/subscriptions`} 
+                           url={`/agent/subscriptions?agentId=${searchParams.get('agentId')}`} 
                        />
                    </div>
 
@@ -92,7 +92,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/items`}  
+                           url={`/agent/items?agentId=${searchParams.get('agentId')}`}  
                        />
                    </div>
 
@@ -106,7 +106,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/wallet`} 
+                           url={`/agent/wallet?agentId=${searchParams.get('agentId')}`} 
                        />
                    </div>
 
@@ -120,7 +120,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/orders`}  
+                           url={`/agent/orders?agentId=${searchParams.get('agentId')}`}  
                        />
                    </div>
 
@@ -134,7 +134,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/agent/${agentId}/stats`}  
+                           url={`/agent/stats?agentId=${searchParams.get('agentId')}`}  
                        />
                    </div>
 
