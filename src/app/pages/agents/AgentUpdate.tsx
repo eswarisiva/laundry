@@ -51,6 +51,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/timeslots?agentId=${searchParams.get('agentId')}`} 
                        />
                    </div>
 
@@ -148,6 +149,7 @@ const AgentUpdate : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
+                           url={`/agent/ratings?agentId=${searchParams.get('agentId')}`}  
                        />
                    </div>
 

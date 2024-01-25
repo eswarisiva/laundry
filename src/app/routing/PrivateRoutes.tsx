@@ -1,5 +1,5 @@
 import {lazy, FC, Suspense} from 'react'
-import {Route, Routes, Navigate} from 'react-router-dom'
+import { Route, Routes, Navigate} from 'react-router-dom'
 import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {Dashboard} from '../pages/dashboard/Dashboard';
@@ -40,6 +40,8 @@ import AgentStatistics from '../pages/agents/Statistics';
 import AgentOrders from '../pages/agents/Orders';
 import AgentItems from '../pages/agents/AgentItems';
 import AgentSubscriptions from '../pages/agents/Subscriptions';
+import AgentTimeslots from '../pages/agents/AgentTimeslots';
+import AgentRatings from '../pages/agents/AgentRatings';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -53,103 +55,105 @@ const PrivateRoutes = () => {
   const UsersPage = lazy(() => import('../modules/apps/user-management/UsersPage'))
 
   return (
-    <Routes>
-      <Route element={<MasterLayout />}>
-        {/* Redirect to Dashboard after success login/registartion */}
-        <Route path='auth/*' element={<Navigate to='/dashboard' />} />
-        {/* Pages */}
-        <Route path='dashboard' element={<Dashboard />} />
-        <Route path='userRoles' element={<UserRoles />} />
-        <Route path='userRoles/:roleId' element={<UserRoleDetail />} />
-        <Route path='adminUsers' element={<AdminUserList />} />
-        <Route path='adminUsers/:userId' element={<AdminUserDetail />} />
-        <Route path='currency' element={<CurrencyList />} />
-        <Route path='currency/:currencyId' element={<CurrencyDetail />} />
-        <Route path='country' element={<CountryList />} />
-        <Route path='country/:countryId' element={<CountryDetail />} />
-        <Route path='state' element={<StateList />} />
-        <Route path='state/:stateId' element={<StateDetail />} />
-        <Route path='city' element={<CityList />} />
-        <Route path='city/:cityId' element={<CityDetail />} />
-        <Route path='area' element={<AreaList />} />
-        <Route path='area/:areaId' element={<AreaDetail />} />
-        <Route path='category' element={<CategoryList />} />
-        <Route path='category/:categoryId' element={<CategoryDetail />} />
-        <Route path='item' element={<ItemList />} />
-        <Route path='item/:itemId' element={<ItemDetail />} />
-        <Route path='settings/companyInfo' element={<CompanyInfo />} />
-        <Route path='settings/app' element={<AppSettings />} />
-        <Route path='settings/rate' element={<RateSettings />} />
-        <Route path='settings/cancellation' element={<Cancellations />} />
-        <Route path='settings/tax' element={<TaxList />} />
-        <Route path='settings/tax/:taxId' element={<TaxDetail />} />
-        <Route path='settings/currencyRates' element={<CurrencyRates />} />
-        <Route path='agent/list' element={<AgentList />} />
-        <Route path='agent/profile' element={<AgentProfile />}  />
-        <Route path='agent/locationCharges' element={<LocationCharges />}  />
-        <Route path='agent/users' element={<AgentUsers />}  />
-        <Route path='agent/user' element={<AgentUserDetail />}  />
-        <Route path='agent' element={<AgentUpdate />}  />
-        <Route path='agent/wallet' element={<AgentWallet />}  />
-        <Route path='agent/stats' element={<AgentStatistics />}  />
-        <Route path='agent/orders' element={<AgentOrders />}  />
-        <Route path='agent/items' element={<AgentItems />}  />
-        <Route path='agent/subscriptions' element={<AgentSubscriptions />}  />
-        <Route path='builder' element={<BuilderPageWrapper />} />
-        <Route path='menu-test' element={<MenuTestPage />} />
-        {/* Lazy Modules */}
-        <Route
-          path='crafted/pages/profile/*'
-          element={
-            <SuspensedView>
-              <ProfilePage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/pages/wizards/*'
-          element={
-            <SuspensedView>
-              <WizardsPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/widgets/*'
-          element={
-            <SuspensedView>
-              <WidgetsPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/account/*'
-          element={
-            <SuspensedView>
-              <AccountPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='apps/chat/*'
-          element={
-            <SuspensedView>
-              <ChatPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='apps/user-management/*'
-          element={
-            <SuspensedView>
-              <UsersPage />
-            </SuspensedView>
-          }
-        />
-        {/* Page Not Found */}
-        <Route path='*' element={<Navigate to='/error/404' />} />
-      </Route>
-    </Routes>
+      <Routes>
+        <Route element={<MasterLayout />}>
+          {/* Redirect to Dashboard after success login/registartion */}
+          <Route path='auth/*' element={<Navigate to='/dashboard' />} />
+          {/* Pages */}
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='userRoles' element={<UserRoles />} />
+          <Route path='userRoles/:roleId' element={<UserRoleDetail />} />
+          <Route path='adminUsers' element={<AdminUserList />} />
+          <Route path='adminUsers/:userId' element={<AdminUserDetail />} />
+          <Route path='currency' element={<CurrencyList />} />
+          <Route path='currency/:currencyId' element={<CurrencyDetail />} />
+          <Route path='country' element={<CountryList />} />
+          <Route path='country/:countryId' element={<CountryDetail />} />
+          <Route path='state' element={<StateList />} />
+          <Route path='state/:stateId' element={<StateDetail />} />
+          <Route path='city' element={<CityList />} />
+          <Route path='city/:cityId' element={<CityDetail />} />
+          <Route path='area' element={<AreaList />} />
+          <Route path='area/:areaId' element={<AreaDetail />} />
+          <Route path='category' element={<CategoryList />} />
+          <Route path='category/:categoryId' element={<CategoryDetail />} />
+          <Route path='item' element={<ItemList />} />
+          <Route path='item/:itemId' element={<ItemDetail />} />
+          <Route path='settings/companyInfo' element={<CompanyInfo />} />
+          <Route path='settings/app' element={<AppSettings />} />
+          <Route path='settings/rate' element={<RateSettings />} />
+          <Route path='settings/cancellation' element={<Cancellations />} />
+          <Route path='settings/tax' element={<TaxList />} />
+          <Route path='settings/tax/:taxId' element={<TaxDetail />} />
+          <Route path='settings/currencyRates' element={<CurrencyRates />} />
+          <Route path='agent/list' element={<AgentList />} />
+          <Route path='agent/profile' element={<AgentProfile />} />
+          <Route path='agent/locationCharges' element={<LocationCharges />} />
+          <Route path='agent/users' element={<AgentUsers />} />
+          <Route path='agent/user' element={<AgentUserDetail />} />
+          <Route path='agent' element={<AgentUpdate />} />
+          <Route path='agent/wallet' element={<AgentWallet />} />
+          <Route path='agent/stats' element={<AgentStatistics />} />
+          <Route path='agent/orders' element={<AgentOrders />} />
+          <Route path='agent/items' element={<AgentItems />} />
+          <Route path='agent/subscriptions' element={<AgentSubscriptions />} />
+          <Route path='agent/timeslots' element={<AgentTimeslots />} />
+          <Route path='agent/ratings' element={<AgentRatings />} />
+          <Route path='builder' element={<BuilderPageWrapper />} />
+          <Route path='menu-test' element={<MenuTestPage />} />
+          {/* Lazy Modules */}
+          <Route
+            path='crafted/pages/profile/*'
+            element={
+              <SuspensedView>
+                <ProfilePage />
+              </SuspensedView>
+            }
+          />
+          <Route
+            path='crafted/pages/wizards/*'
+            element={
+              <SuspensedView>
+                <WizardsPage />
+              </SuspensedView>
+            }
+          />
+          <Route
+            path='crafted/widgets/*'
+            element={
+              <SuspensedView>
+                <WidgetsPage />
+              </SuspensedView>
+            }
+          />
+          <Route
+            path='crafted/account/*'
+            element={
+              <SuspensedView>
+                <AccountPage />
+              </SuspensedView>
+            }
+          />
+          <Route
+            path='apps/chat/*'
+            element={
+              <SuspensedView>
+                <ChatPage />
+              </SuspensedView>
+            }
+          />
+          <Route
+            path='apps/user-management/*'
+            element={
+              <SuspensedView>
+                <UsersPage />
+              </SuspensedView>
+            }
+          />
+          {/* Page Not Found */}
+          <Route path='*' element={<Navigate to='/error/404' />} />
+        </Route>
+      </Routes>
   )
 }
 

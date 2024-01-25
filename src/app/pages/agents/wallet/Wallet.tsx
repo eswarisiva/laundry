@@ -11,7 +11,7 @@ const AgentWallet : FC = () => {
             </h3>
 
             <div className='card mb-8'>
-                
+
                 <div className='card-body bg-light-warning'>
                     <div className='d-flex align-items-center'>
                         <div className='col-md-8'>
@@ -30,14 +30,14 @@ const AgentWallet : FC = () => {
                         </div>
 
                         <div className='col-md-2'>
-                             <button data-bs-toggle="modal" data-bs-target="#kt_modal_1" className='btn btn-sm fw-bold btn-primary'>Add/Update</button>
-                             <span  data-bs-toggle="modal" data-bs-target="#kt_modal_2" className='badge badge-warning fs-8 fw-bold'>Verification Pending</span>
-           
+                            <button data-bs-toggle="modal" data-bs-target="#kt_modal_1" className='btn btn-sm fw-bold btn-primary'>Add/Update</button>
+                            <span data-bs-toggle="modal" data-bs-target="#kt_modal_2" className='badge badge-warning fs-8 fw-bold'>Verification Pending</span>
+
                         </div>
 
                     </div>
                 </div>
-</div>
+            </div>
 
 <h3 className='card-title align-items-start flex-column mb-4'>
                 <span className='card-label fw-bold fs-3 mb-1'>TRANSACTIONS</span>
