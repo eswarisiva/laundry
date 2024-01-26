@@ -37,8 +37,9 @@ const SidebarMenuMain = () => {
           <SidebarMenuItem to='/settings/currencyRates' title='Currency Rates' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub> 
 
-      <SidebarMenuItemWithSub to='' icon='gear' title='AGENCY' fontIcon='bi-layers'>
-        <SidebarMenuItem to='/agent/list' title='Agency List' fontIcon='bi-layers' />
+      <SidebarMenuItemWithSub to='' icon='gear' title='Users' fontIcon='bi-layers'>
+        <SidebarMenuItem to='/agent/list' title='Agency' fontIcon='bi-layers' />
+        <SidebarMenuItem to='/customer/list' title='Customers' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub>
 
       

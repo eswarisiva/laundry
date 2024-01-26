@@ -42,6 +42,17 @@ import AgentItems from '../pages/agents/AgentItems';
 import AgentSubscriptions from '../pages/agents/Subscriptions';
 import AgentTimeslots from '../pages/agents/AgentTimeslots';
 import AgentRatings from '../pages/agents/AgentRatings';
+import CustomerList from '../pages/customers/CustomerList';
+import CustomerProfile from '../pages/customers/CustomerProfile';
+import CustomerAccount from '../pages/customers/CustomerAccount';
+import CustomerAddress from '../pages/customers/CustomerAddress';
+import CustomerPreferences from '../pages/customers/CustomerPreferences';
+import CustomerGiftCards from '../pages/customers/CustomerGiftCards';
+import CustomerTransactions from '../pages/customers/CustomerTransactions';
+import CustomerCards from '../pages/customers/CustomerCards';
+import CustomerOrders from '../pages/customers/CustomerOrders';
+import CustomerReviews from '../pages/customers/CustomerReviews';
+import CustomerSettings from '../pages/customers/CustomerSettings';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -99,6 +110,17 @@ const PrivateRoutes = () => {
           <Route path='agent/subscriptions' element={<AgentSubscriptions />} />
           <Route path='agent/timeslots' element={<AgentTimeslots />} />
           <Route path='agent/ratings' element={<AgentRatings />} />
+          <Route path='customer/list' element={<CustomerList />} />
+          <Route path='customer/profile' element={<CustomerProfile />} />
+          <Route path='customer/account' element={<CustomerAccount />} />
+          <Route path='customer/addresses' element={<CustomerAddress />} />
+          <Route path='customer/preferences' element={<CustomerPreferences />} />
+          <Route path='customer/giftCards' element={<CustomerGiftCards />} />
+          <Route path='customer/transactions' element={<CustomerTransactions />} />
+          <Route path='customer/cards' element={<CustomerCards />} />
+          <Route path='customer/orders' element={<CustomerOrders />} />
+          <Route path='customer/reviews' element={<CustomerReviews />} />
+          <Route path='customer/settings' element={<CustomerSettings />} />
           <Route path='builder' element={<BuilderPageWrapper />} />
           <Route path='menu-test' element={<MenuTestPage />} />
           {/* Lazy Modules */}
