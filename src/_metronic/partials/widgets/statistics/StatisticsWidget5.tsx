@@ -1,6 +1,7 @@
 
 import React from 'react'
-import {KTIcon} from '../../../helpers'
+import {KTIcon} from '../../../helpers';
+import {Link} from 'react-router-dom';
 
 type Props = {
   className: string
@@ -27,7 +28,7 @@ const StatisticsWidget5: React.FC<Props> = ({
   
 }) => {
   return (
-    <a href={url ? url :'#'} className={`card bg-${color} hoverable ${className}`}>
+    <Link to={url ? url :'#'} className={`card bg-${color} hoverable ${className}`}>
       <div className='card-body'>
       { svgIcon && <KTIcon iconName={svgIcon} className={`text-${iconColor} fs-3x ms-n1`} /> }
 
@@ -35,7 +36,7 @@ const StatisticsWidget5: React.FC<Props> = ({
 
         <div className={`fw-semibold text-${descriptionColor}`}>{description}</div>
       </div>
-    </a>
+    </Link>
   )
 }
 

@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import { PageTitle } from '../../../_metronic/layout/core';
 import { KTIcon } from '../../../_metronic/helpers';
+import {Link} from 'react-router-dom';
 
 const CustomerList : FC = () => {
     return (
@@ -40,12 +41,12 @@ const CustomerList : FC = () => {
                                     <td>Active</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>
-                                        <a href='/customer/profile?customerId=1234' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                        <Link to='/customer/profile?customerId=1234' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                             <KTIcon iconName='pencil' className='fs-3' />
-                                        </a>
-                                        <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
+                                        </Link>
+                                        <Link to='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
                                             <KTIcon iconName='trash' className='fs-3' />
-                                        </a>
+                                        </Link>
                                     </div>
                                     </td>
                                 </tr>

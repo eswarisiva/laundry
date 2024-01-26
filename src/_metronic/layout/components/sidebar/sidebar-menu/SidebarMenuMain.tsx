@@ -1,5 +1,4 @@
 import {useIntl} from 'react-intl'
-import {KTIcon} from '../../../../helpers'
 import {SidebarMenuItemWithSub} from './SidebarMenuItemWithSub'
 import {SidebarMenuItem} from './SidebarMenuItem'
 
@@ -42,30 +41,6 @@ const SidebarMenuMain = () => {
         <SidebarMenuItem to='/customer/list' title='Customers' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub>
 
-      
-      <SidebarMenuItem to='/crafted/pages/profile/overview' title='MASTERS'  />
-          <SidebarMenuItem to='/crafted/pages/profile/projects' title='SETTINGS'  />
-          <SidebarMenuItem
-            to='/crafted/pages/profile/campaigns'
-            title='ORDERS'
-
-          />
-          <SidebarMenuItem
-            to='/crafted/pages/profile/documents'
-            title='USERS'
-            
-          />
-          <SidebarMenuItem
-            to='/crafted/pages/profile/connections'
-            title='ACTIVITIES'
-            
-          />
-      <SidebarMenuItem
-        to='/apps/user-management/users'
-        icon='abstract-28'
-        title='REPORTS'
-        fontIcon='bi-layers'
-      />
       
     </>
   )
