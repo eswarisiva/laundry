@@ -14,6 +14,12 @@ const CustomerList : FC = () => {
                         <h3 className='card-title align-items-start flex-column'>
                          <span className='card-label fw-bold fs-3 mb-1'>Customer List</span>
                         </h3>
+                        <div  className='card-toolbar' data-bs-toggle='tooltip' data-bs-placement='top'  data-bs-trigger='hover' title='Click to add a user'>
+                            <Link to={`/`} className='btn btn-sm btn-light-primary'>
+                                <KTIcon iconName='plus' className='fs-3' />
+                                New Customer
+                            </Link>
+                        </div>
                     </div>
                     <div className='card-body py-3'>
                         <div className='table-responsive'>
@@ -32,12 +38,40 @@ const CustomerList : FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Name</td>
+                                    <td>
+                                        <Link to='/customer/profile?customerId=1234'>    
+                                        Badr al-Din
+                                        </Link>
+                                    </td>
                                     <td>Laundry Services</td>
-                                    <td>9087719073</td>
+                                    <td>+9719087719073</td>
                                     <td>Online</td>
-                                    <td>Date & Time</td>
-                                    <td>Date & Time</td>
+                                    <td>12/01/2023</td>
+                                    <td>12/01/2023</td>
+                                    <td>Active</td>
+                                    <td>
+                                    <div className='d-flex justify-content-end flex-shrink-0'>
+                                        <Link to='/customer/profile?customerId=1234' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                            <KTIcon iconName='pencil' className='fs-3' />
+                                        </Link>
+                                        <Link to='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
+                                            <KTIcon iconName='trash' className='fs-3' />
+                                        </Link>
+                                    </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <Link to='/customer/profile?customerId=1234'>    
+                                        Fakhraddin
+                                        </Link>
+                                    </td>
+                                    <td>Laundry Services</td>
+                                    <td>+9719087719073</td>
+                                    <td>Online</td>
+                                    <td>12/01/2023</td>
+                                    <td>12/01/2023</td>
                                     <td>Active</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>
