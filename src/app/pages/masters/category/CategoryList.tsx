@@ -2,6 +2,7 @@ import {FC} from 'react';
 import { PageTitle } from '../../../../_metronic/layout/core';
 import { KTIcon } from '../../../../_metronic/helpers';
 import { toAbsoluteUrl } from '../../../../_metronic/helpers';
+import {Link} from 'react-router-dom';
 
 const CategoryList : FC = () => {
     return (
@@ -15,10 +16,10 @@ const CategoryList : FC = () => {
                          <span className='card-label fw-bold fs-3 mb-1'>Category List</span>
                         </h3>
                         <div  className='card-toolbar' data-bs-toggle='tooltip' data-bs-placement='top'  data-bs-trigger='hover' title='Click to add a category'>
-                            <a href='#' className='btn btn-sm btn-light-primary'>
+                            <Link to='/category/create' className='btn btn-sm btn-light-primary'>
                                 <KTIcon iconName='plus' className='fs-3' />
                                 New Category
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className='card-body py-3'>
@@ -45,13 +46,13 @@ const CategoryList : FC = () => {
                                     </td>
                                     <td>Top</td>
                                     <td>Laundry</td>
-                                    <td>DD/MM/YY</td>
+                                    <td>12/10/22</td>
                                     <td>Active</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>
-                                        <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                        <Link to='/category/1234' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                             <KTIcon iconName='pencil' className='fs-3' />
-                                        </a>
+                                        </Link>
                                         <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
                                             <KTIcon iconName='trash' className='fs-3' />
                                         </a>

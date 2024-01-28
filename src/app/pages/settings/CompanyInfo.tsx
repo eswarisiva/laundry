@@ -19,6 +19,7 @@ const CompanyInfo : FC = () => {
                                     type='text'
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='Enter Company Name'
+                                    value='FlexClean'
                                     />
                                 </div>
                             </div>
@@ -35,6 +36,7 @@ const CompanyInfo : FC = () => {
                                     type='text'
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='Enter Legal Name'
+                                    value='FlexClean'
                                     />
                                 </div>
                             </div>
@@ -47,7 +49,7 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value={'YES'}
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Choose Yes or no...</option>
@@ -69,6 +71,7 @@ const CompanyInfo : FC = () => {
                                     type='text'
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='Enter Taxation Number'
+                                    value="12345"
                                     />
                                 </div>
                             </div>
@@ -82,9 +85,10 @@ const CompanyInfo : FC = () => {
                             <div className='row'>
                                 <div className='col-lg-12 fv-row'>
                                     <input
-                                    type='date'
+                                    type='text'
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='Choose Date'
+                                    value='12-12-2021'
                                     />
                                 </div>
                             </div>
@@ -100,6 +104,7 @@ const CompanyInfo : FC = () => {
                                     <textarea
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='About Us'
+                                    value='Lorum Ipsum'
                                     />
                                 </div>
                             </div>
@@ -132,6 +137,7 @@ const CompanyInfo : FC = () => {
                                     type='text'
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='Enter Apartment, Building, Flat'
+                                    value='12'
                                     />
                                 </div>
                             </div>
@@ -144,11 +150,11 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value='UAE'
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select Country...</option>
-                                        <option value='Country'>Country</option>
+                                        <option value='UAE'>UAE</option>
                                         <option value='Country'>Country</option>
                                     </select>
                                 </div>
@@ -162,11 +168,11 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value='Dubai'
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select State...</option>
-                                        <option value='Country'>State</option>
+                                        <option value='Dubai'>Dubai</option>
                                         <option value='Country'>State</option>
                                     </select>
                                 </div>
@@ -180,11 +186,11 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value='Abu Dhabi'
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select City...</option>
-                                        <option value='Country'>City</option>
+                                        <option value='Abu Dhabi'>Abu Dhabi</option>
                                         <option value='Country'>City</option>
                                     </select>
                                 </div>
@@ -217,13 +223,12 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
-                                        className='form-select form-select-solid form-select-lg fw-bold'
-                                        >
-                                        <option value=''>Select Email...</option>
-                                        <option value='Area'>Email</option>
-                                        <option value='Area'>Email</option>
-                                    </select>
+                                <input
+                                    type='email'
+                                    className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                    placeholder='Enter Apartment, Building, Flat'
+                                    value='flexiclean@outlook.com'
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -235,13 +240,12 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
-                                        className='form-select form-select-solid form-select-lg fw-bold'
-                                        >
-                                        <option value=''>Select Phone...</option>
-                                        <option value='Area'>Phone</option>
-                                        <option value='Area'>Phone</option>
-                                    </select>
+                                    <input
+                                        type='text'
+                                        className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                        placeholder='Enter Apartment, Building, Flat'
+                                        value='+9719087719073'
+                                        />
                                 </div>
                             </div>
                         </div>
