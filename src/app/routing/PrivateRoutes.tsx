@@ -64,6 +64,8 @@ import ReferralDetail from '../pages/activities/referrals/ReferralDetail';
 import GiftCards from '../pages/activities/giftCards/GiftCards';
 import GiftCardDetail from '../pages/activities/giftCards/GiftCardDetail';
 import BannerDetail from '../pages/activities/banners/BannerDetail';
+import ActivityOrders from '../pages/activities/orders/Orders';
+import OrderDetail from '../pages/activities/orders/OrderDetail';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -143,6 +145,8 @@ const PrivateRoutes = () => {
           <Route path='activities/giftCard/:giftId' element={<GiftCardDetail />} />
           <Route path='activities/banners' element={<Banners />} />
           <Route path='activities/banner/:bannerId' element={<BannerDetail />} />
+          <Route path='activities/orders' element={<ActivityOrders />} />
+          <Route path='activities/order/:orderId' element={<OrderDetail />} />
           <Route path='builder' element={<BuilderPageWrapper />} />
           <Route path='menu-test' element={<MenuTestPage />} />
           {/* Lazy Modules */}

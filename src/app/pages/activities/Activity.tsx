@@ -91,7 +91,7 @@ const Activity : FC = () => {
                            titleColor='black'
                            description=''
                            descriptionColor='white'
-                           url={`/customer/orders`}
+                           url={`/activities/orders`}
                         />
                    </div>
 
