@@ -53,6 +53,17 @@ import CustomerCards from '../pages/customers/CustomerCards';
 import CustomerOrders from '../pages/customers/CustomerOrders';
 import CustomerReviews from '../pages/customers/CustomerReviews';
 import CustomerSettings from '../pages/customers/CustomerSettings';
+import Activity from '../pages/activities/Activity';
+import MCreditlist from '../pages/activities/mCredit/MCreditlist';
+import MCreditDetail from '../pages/activities/mCredit/MCreditDetail';
+import Discountlist from '../pages/activities/discounts/DiscountList';
+import DiscountDetail from '../pages/activities/discounts/DiscountDetail';
+import ReferralList from '../pages/activities/referrals/ReferralList';
+import Banners from '../pages/activities/banners/Banners';
+import ReferralDetail from '../pages/activities/referrals/ReferralDetail';
+import GiftCards from '../pages/activities/giftCards/GiftCards';
+import GiftCardDetail from '../pages/activities/giftCards/GiftCardDetail';
+import BannerDetail from '../pages/activities/banners/BannerDetail';
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -121,6 +132,17 @@ const PrivateRoutes = () => {
           <Route path='customer/orders' element={<CustomerOrders />} />
           <Route path='customer/reviews' element={<CustomerReviews />} />
           <Route path='customer/settings' element={<CustomerSettings />} />
+          <Route path='activities' element={<Activity />} />
+          <Route path='activities/mcreditlist' element={<MCreditlist />} />
+          <Route path='activities/mcredit/create' element={<MCreditDetail />} />
+          <Route path='activities/discounts' element={<Discountlist />} />
+          <Route path='activities/discount/:discountId' element={<DiscountDetail />} />
+          <Route path='activities/referrals' element={<ReferralList />} />
+          <Route path='activities/referral/:referralId' element={<ReferralDetail />} />
+          <Route path='activities/giftCards' element={<GiftCards />} />
+          <Route path='activities/giftCard/:giftId' element={<GiftCardDetail />} />
+          <Route path='activities/banners' element={<Banners />} />
+          <Route path='activities/banner/:bannerId' element={<BannerDetail />} />
           <Route path='builder' element={<BuilderPageWrapper />} />
           <Route path='menu-test' element={<MenuTestPage />} />
           {/* Lazy Modules */}

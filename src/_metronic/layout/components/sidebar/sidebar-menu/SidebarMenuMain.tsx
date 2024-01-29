@@ -41,6 +41,12 @@ const SidebarMenuMain = () => {
         <SidebarMenuItem to='/customer/list' title='Customers' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub>
 
+      <SidebarMenuItem
+        to='/activities'        icon='element-11'
+        title='ACTIVITIES'
+        fontIcon='bi-app-indicator'
+      />
+
       
     </>
   )
