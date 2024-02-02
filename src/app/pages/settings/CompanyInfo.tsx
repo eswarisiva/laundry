@@ -150,11 +150,11 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select value='UAE'
+                                    <select value='Bahrain'
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select Country...</option>
-                                        <option value='UAE'>UAE</option>
+                                        <option value='Bahrain'>Bahrain</option>
                                         <option value='Country'>Country</option>
                                     </select>
                                 </div>
@@ -168,7 +168,7 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select value='Dubai'
+                                    <select  value=''
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select State...</option>
@@ -186,11 +186,11 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select value='Abu Dhabi'
+                                    <select value='Manama'
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select City...</option>
-                                        <option value='Abu Dhabi'>Abu Dhabi</option>
+                                        <option value='Abu Dhabi'>Manama</option>
                                         <option value='Country'>City</option>
                                     </select>
                                 </div>
@@ -204,11 +204,11 @@ const CompanyInfo : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value={`Diplomatic Area`}
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select Area...</option>
-                                        <option value='Area'>Area</option>
+                                        <option value='Diplomatic Area'>Diplomatic Area</option>
                                         <option value='Area'>Area</option>
                                     </select>
                                 </div>
@@ -227,7 +227,7 @@ const CompanyInfo : FC = () => {
                                     type='email'
                                     className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                     placeholder='Enter Apartment, Building, Flat'
-                                    value='flexiclean@outlook.com'
+                                    value='info@flexiclean@me'
                                     />
                                 </div>
                             </div>
@@ -244,7 +244,7 @@ const CompanyInfo : FC = () => {
                                         type='text'
                                         className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                         placeholder='Enter Apartment, Building, Flat'
-                                        value='+9719087719073'
+                                        value='+973-34567890'
                                         />
                                 </div>
                             </div>

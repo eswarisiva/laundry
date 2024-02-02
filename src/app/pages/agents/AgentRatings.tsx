@@ -49,10 +49,10 @@ const AgentRatings : FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>dd/mm/yy</td>
+                                    <td>12/03/23</td>
                                     <td>ORD001</td>
-                                    <td>Name</td>
-                                    <td>9087719073</td>
+                                    <td>Altaf malik</td>
+                                    <td>+973 - 33330000</td>
                                     <td>POS</td>
                                     <td>Others</td>
                                     <td>4/5</td>

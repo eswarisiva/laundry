@@ -12,14 +12,14 @@ const LocationCharges : FC = () => {
                 <div className='d-flex align-items-center mb-8'>
                     <div className='col-md-3'>
                             <div className='flex-grow-1'>
-                                <span className='text-muted fw-bold d-block'>Area Name 1</span>
+                                <span className='text-muted fw-bold d-block'>Diplomatic Area</span>
                                 <span className='text-muted fw-semibold d-block'>Country Name / City Name</span>
                             </div>
                     </div>
 
                     <div className='col-md-2'>
                             <div className='flex-grow-1'>
-                                <span className='text-muted fw-bold d-block'>0 BHD</span>
+                                <span className='text-muted fw-bold d-block'>35 BHD</span>
                                 <span className='text-muted fw-semibold d-block'>Min Order Amount</span>
                             </div>
                     </div>
@@ -35,7 +35,7 @@ const LocationCharges : FC = () => {
                             <div className='flex-grow-1'>
                                 <span className='text-muted fw-bold d-block'>Service Available</span>
                                 <div className="form-check form-switch form-check-custom form-check-solid">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                    <input className="form-check-input" checked={true} type="checkbox" value="" id="flexSwitchDefault" />
                                 </div>
                             </div>
                     </div>

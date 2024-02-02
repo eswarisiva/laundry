@@ -37,11 +37,11 @@ const AreaList : FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Al Barsa Height</td>
-                                    <td>Dubai</td>
+                                    <td>Diplomatic Area</td>
+                                    <td>Manama</td>
                                     <td>N/A</td>
-                                    <td>Dubai</td>
-                                    <td>Date & Time</td>
+                                    <td>BH</td>
+                                    <td>12/11/23 12:00 AM</td>
                                     <td>Active</td>
                                     <td>
                                         <div className='d-flex justify-content-end flex-shrink-0'>

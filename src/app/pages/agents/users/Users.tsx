@@ -40,15 +40,15 @@ const AgentUsers : FC = () => {
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <div className='symbol symbol-45px me-5'>
-                                                <img src={toAbsoluteUrl('media/avatars/300-14.jpg')} alt='' />
+                                                <img src={toAbsoluteUrl('media/avatars/header-logo.jpeg')} alt='' />
                                             </div>
                                         </div>    
                                     </td>
-                                    <td>Name</td>
-                                    <td>abc@gmail.com</td>
-                                    <td>Abc</td>
-                                    <td>Role</td>
-                                    <td>Mobile</td>
+                                    <td>Malik Basha</td>
+                                    <td>malik@gmail.com</td>
+                                    <td>Malik</td>
+                                    <td>Admin</td>
+                                    <td>+973 - 33330000</td>
                                     <td>Active</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>

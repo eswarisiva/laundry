@@ -34,7 +34,7 @@ const UserRoles : FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Abdul Shaik</td>
+                                    <td>Accountant</td>
                                     <td>
                                         <Link to={'/userRoles/1234'} className='text-gray-900 fw-bold text-hover-primary d-block fs-6'>
                                             View

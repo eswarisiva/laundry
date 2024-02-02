@@ -18,12 +18,12 @@ const AppSettings : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value={`BHD`}
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select Currency...</option>
-                                        <option value='Area'>Currency</option>
-                                        <option value='Area'>Currency</option>
+                                        <option value='BHD'>BHD</option>
+                                        <option value='Dinar'>Dinar</option>
                                     </select>
                                 </div>
                             </div>
@@ -36,12 +36,12 @@ const AppSettings : FC = () => {
                         <div className='col-lg-8'>
                             <div className='row'>
                                 <div className='col-lg-9 fv-row'>
-                                    <select
+                                    <select value={`GMT +4, the UAE`}
                                         className='form-select form-select-solid form-select-lg fw-bold'
                                         >
                                         <option value=''>Select TimeZone...</option>
-                                        <option value='Area'>TimeZone</option>
-                                        <option value='Area'>TimeZone</option>
+                                        <option value='GMT +3, Bahrain'>GMT +3, Bahrain</option>
+                                        <option value='GMT +4, the UAE'>GMT +4, the UAE</option>
                                     </select>
                                 </div>
                             </div>

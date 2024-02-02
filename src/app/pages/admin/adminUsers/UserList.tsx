@@ -43,14 +43,14 @@ const AdminUserList : FC = () => {
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <div className='symbol symbol-45px me-5'>
-                                                <img src={toAbsoluteUrl('media/avatars/300-14.jpg')} alt='' />
+                                                <img src={toAbsoluteUrl('media/avatars/header-logo.jpeg')} alt='' />
                                             </div>
                                         </div>    
                                     </td>
                                     <td>Imran Malik</td>
                                     <td>imaran@gmail.com</td>
                                     <td>Imaran</td>
-                                    <td>Role</td>
+                                    <td>Accountant</td>
                                     <td>Mobile</td>
                                     <td>12/01/23</td>
                                     <td>Active</td>

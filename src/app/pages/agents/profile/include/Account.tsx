@@ -14,6 +14,7 @@ const Account : FC = () => {
                                 type='text'
                                 className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                 placeholder='Enter Mobile Number'
+                                value={`+973-33332222`}
                             />
                         </div>
                     </div>
@@ -30,6 +31,7 @@ const Account : FC = () => {
                                 type='email'
                                 className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                 placeholder='Enter Email'
+                                value={`info@abdlwash.com`}
                             />
                         </div>
                     </div>

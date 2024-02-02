@@ -11,7 +11,7 @@ const Services : FC = () => {
                        <div className='col-lg-12 fv-row'>
                             <div className="mb-10">
                                 <div className="form-check form-switch form-check-custom form-check-solid">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                    <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                 </div>
                             </div>
                        </div>
@@ -27,7 +27,7 @@ const Services : FC = () => {
                    <div className='col-lg-4'>
                          <div className="mb-10">
                             <div className="form-check form-check-custom form-check-solid">
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                                <input className="form-check-input" checked={true} type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label">
                                     POS
                                 </label>
@@ -36,7 +36,7 @@ const Services : FC = () => {
                     </div>   
                     <div className='col-lg-4'>
                     <div className="form-check form-check-custom form-check-solid">
-                        <input className="form-check-input" type="checkbox" value="" id="flexRadioDefault" />
+                        <input className="form-check-input" type="checkbox" checked={true} value="" id="flexRadioDefault" />
                         <label className="form-check-label" >
                             Online
                         </label>
@@ -52,7 +52,7 @@ const Services : FC = () => {
                        <div className='col-lg-12 fv-row'>
                             <div className="mb-10">
                                 <div className="form-check form-switch form-check-custom form-check-solid">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                    <input className="form-check-input" checked={true} type="checkbox" value="" id="flexSwitchDefault" />
                                     <label className="form-check-label">
                                         (M Logistic applicable for online service if enabled)
                                     </label>

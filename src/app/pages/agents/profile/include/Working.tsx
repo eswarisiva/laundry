@@ -20,16 +20,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Monday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00"  /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="17:00"  /> 
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />
@@ -39,16 +39,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Tuesday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00" /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="17:00"  /> 
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />
@@ -58,16 +58,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Wednesday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00" /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="17:00"  /> 
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />
@@ -77,16 +77,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Thursday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00" /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="17:00"  /> 
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />
@@ -96,16 +96,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Friday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00" /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="17:00"  /> 
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />
@@ -115,16 +115,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Saturday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00" /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="17:00"  /> 
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />
@@ -134,16 +134,16 @@ const Working : FC = () => {
                                 <tr>
                                     <td>
                                             <div className="form-check form-switch form-check-custom form-check-solid">
-                                                <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                                <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
                                             </div>
                                      
                                    </td>
                                     <td>Sunday</td>
                                     <td>
-                                      <input type='time' /> 
+                                      <input type='time' value="09:00"  /> 
                                     </td>
                                     <td>
-                                      <input type='time' /> 
+                                    <input type='time'  value="17:00"  />
                                     </td>
                                     <td>
                                        <KTIcon iconName='plus' className='fs-4 me-1' />

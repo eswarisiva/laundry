@@ -13,6 +13,7 @@ const Address : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter No & Street/Road'
+                               value={`No.43 a`}
                            />
                        </div>
                    </div>
@@ -29,6 +30,7 @@ const Address : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Apartment, Building, Flat'
+                               value={`Abdul Rahmin Complex`}
                            />
                        </div>
                    </div>
@@ -41,11 +43,11 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select
+                           <select value={`Diplomatic Area`}
                                className='form-select form-select-solid form-select-lg fw-bold'
                            >
                                <option value=''>Select Area...</option>
-                               <option value='Area'>Area</option>
+                               <option value='Diplomatic Area'>Diplomatic Area</option>
                                <option value='Area'>Area</option>
                            </select>
                        </div>
@@ -60,11 +62,11 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select
+                           <select value={`Bahrain`}
                                className='form-select form-select-solid form-select-lg fw-bold'
                            >
                                <option value=''>Select Country...</option>
-                               <option value='Country'>Country</option>
+                               <option value='Bahrain'>Bahrain</option>
                                <option value='Country'>Country</option>
                            </select>
                        </div>
@@ -78,7 +80,7 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select
+                           <select 
                                className='form-select form-select-solid form-select-lg fw-bold'
                            >
                                <option value=''>Select State...</option>
@@ -96,11 +98,11 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select
+                           <select value={`Manama`}
                                className='form-select form-select-solid form-select-lg fw-bold'
                            >
                                <option value=''>Select City...</option>
-                               <option value='Country'>City</option>
+                               <option value='Manama'>Manama</option>
                                <option value='Country'>City</option>
                            </select>
                        </div>

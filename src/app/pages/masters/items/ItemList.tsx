@@ -40,11 +40,11 @@ const ItemList : FC = () => {
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <div className='symbol symbol-45px me-5'>
-                                                <img src={toAbsoluteUrl('media/avatars/300-14.jpg')} alt='' />
+                                                <img src={toAbsoluteUrl('media/avatars/shirt.jpeg')} alt='' />
                                             </div>
                                         </div>    
                                     </td>
-                                    <td>Top</td>
+                                    <td>Shirt</td>
                                     <td>Laundry</td>
                                     <td>12/05/21</td>
                                     <td>Active</td>

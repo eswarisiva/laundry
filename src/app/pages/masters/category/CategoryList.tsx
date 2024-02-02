@@ -40,7 +40,7 @@ const CategoryList : FC = () => {
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <div className='symbol symbol-45px me-5'>
-                                                <img src={toAbsoluteUrl('media/avatars/300-14.jpg')} alt='' />
+                                                <img src={toAbsoluteUrl('media/avatars/shirt.jpeg')} alt='' />
                                             </div>
                                         </div>    
                                     </td>

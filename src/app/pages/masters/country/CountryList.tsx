@@ -37,8 +37,8 @@ const CountryList : FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>United Arab Emirates</td>
-                                    <td>+971</td>
+                                    <td>Bahrain</td>
+                                    <td>+973</td>
                                     <td>BHD</td>
                                     <td>NO</td>
                                     <td>12/10/23</td>

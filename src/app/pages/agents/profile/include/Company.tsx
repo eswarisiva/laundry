@@ -13,6 +13,7 @@ const Company : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Company Name'
+                               value='Abd al-Uzza'
                            />
                        </div>
                    </div>
@@ -29,6 +30,7 @@ const Company : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Owner Name'
+                               value='Abdul'
                            />
                        </div>
                    </div>
@@ -41,7 +43,7 @@ const Company : FC = () => {
                <div className='row col-lg-8'>
                <div className='col-lg-4'>
                    <div className="form-check form-check-custom form-check-solid">
-                       <input className="form-check-input" type="radio" value="" id="flexRadioDefault" />
+                       <input className="form-check-input" type="radio" checked={true} id="flexRadioDefault" />
                        <label className="form-check-label" >
                        Yes
                        </label>
@@ -68,6 +70,7 @@ const Company : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Taxation Number'
+                               value='190938s'
                            />
                        </div>
                    </div>

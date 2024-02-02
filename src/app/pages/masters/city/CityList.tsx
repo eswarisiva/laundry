@@ -35,9 +35,9 @@ const CityList : FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>UAE</td>
-                                    <td>Dubai</td>
-                                    <td>Date & Time</td>
+                                    <td>Bahrain</td>
+                                    <td>Manama</td>
+                                    <td>12/11/23 11:45 AM</td>
                                     <td>Active</td>
                                     <td>
                                         <div className='d-flex justify-content-end flex-shrink-0'>
