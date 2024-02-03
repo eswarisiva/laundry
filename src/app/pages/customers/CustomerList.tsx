@@ -43,8 +43,8 @@ const CustomerList : FC = () => {
                                         Badr al-Din
                                         </Link>
                                     </td>
-                                    <td>Laundry Services</td>
-                                    <td>+9719087719073</td>
+                                    <td>badr@gmail.com</td>
+                                    <td>+973-9087719073</td>
                                     <td>Online</td>
                                     <td>12/01/2023</td>
                                     <td>12/01/2023</td>
@@ -67,8 +67,8 @@ const CustomerList : FC = () => {
                                         Fakhraddin
                                         </Link>
                                     </td>
-                                    <td>Laundry Services</td>
-                                    <td>+9719087719073</td>
+                                    <td>fakhraddin@gmail.com</td>
+                                    <td>+973-9087719073</td>
                                     <td>Online</td>
                                     <td>12/01/2023</td>
                                     <td>12/01/2023</td>

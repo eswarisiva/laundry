@@ -42,7 +42,7 @@ const AgentList : FC = () => {
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <div className='symbol symbol-45px me-5'>
-                                                <img src={toAbsoluteUrl('media/avatars/laundry.jpeg')} alt='' />
+                                                <img style={{width: 'auto'}} src={toAbsoluteUrl('media/avatars/agent-log.jpg')} alt='' />
                                             </div>
                                         </div>    
                                     </td>
@@ -72,7 +72,7 @@ const AgentList : FC = () => {
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <div className='symbol symbol-45px me-5'>
-                                                <img src={toAbsoluteUrl('media/avatars/laundry.jpeg')} alt='' />
+                                                <img style={{width: 'auto'}}  src={toAbsoluteUrl('media/avatars/agent-log.jpg')} alt='' />
                                             </div>
                                         </div>    
                                     </td>

@@ -19,6 +19,7 @@ const CustomerAccount : FC = () => {
                                         type='text'
                                         className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                         placeholder='Enter Company Name'
+                                        value='Badr al-Din'
                                     />
                                 </div>
                             </div>
@@ -35,6 +36,7 @@ const CustomerAccount : FC = () => {
                                         type='email'
                                         className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                         placeholder='Enter Owner Name'
+                                        value='badr@gmail.com'
                                     />
                                 </div>
                             </div>
@@ -51,6 +53,7 @@ const CustomerAccount : FC = () => {
                                         type='text'
                                         className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                         placeholder='Enter Mobile Number'
+                                        value='+973 - 33334444'
                                     />
                                 </div>
                             </div>
@@ -67,6 +70,7 @@ const CustomerAccount : FC = () => {
                                         type='text'
                                         className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                         placeholder='Enter Special Discount'
+                                        value='5'
                                     />
                                 </div>
                             </div>
@@ -80,7 +84,7 @@ const CustomerAccount : FC = () => {
                             <div className='col-lg-12 fv-row'>
                                 <div className="mb-10">
                                     <div className="form-check form-switch form-check-custom form-check-solid">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                        <input className="form-check-input" checked={true} type="checkbox" value="" id="flexSwitchDefault" />
                                         <label className="form-check-label">
                                             (Inactive / Active)
                                         </label>

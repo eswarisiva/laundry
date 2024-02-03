@@ -5,6 +5,8 @@ const AppSettings : FC = () => {
 
     const [loading, setLoading] = useState(false);
 
+  
+
     return (
         <>
            <PageTitle>APP SETTINGS</PageTitle>
@@ -55,9 +57,10 @@ const AppSettings : FC = () => {
                             <div className='row'>
                                 <div className='col-lg-12 fv-row'>
                                     <input
-                                    type="date"
-                                    className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                                    placeholder='Choose'
+                                        type="date"
+                                        className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                        placeholder='Choose'
+                                        value="12-05-2023"
                                     />
                                 </div>
                             </div>
@@ -71,9 +74,9 @@ const AppSettings : FC = () => {
                             <div className='row'>
                                 <div className='col-lg-12 fv-row'>
                                     <input
-                                    type="file"
-                                    className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                                    placeholder='Choose'
+                                        type="file"
+                                        className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                        placeholder='Choose'
                                     />
                                 </div>
                             </div>
