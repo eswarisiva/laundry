@@ -66,6 +66,15 @@ import GiftCardDetail from '../pages/activities/giftCards/GiftCardDetail';
 import BannerDetail from '../pages/activities/banners/BannerDetail';
 import ActivityOrders from '../pages/activities/orders/Orders';
 import OrderDetail from '../pages/activities/orders/OrderDetail';
+import Reports from '../pages/reports/Reports';
+import AgentTransactions from '../pages/reports/AgentTransactions';
+import ReportCustomerTransactions from '../pages/reports/CustomerTransactions';
+import ReferralTransactions from '../pages/reports/ReferralTransactions';
+import DiscountTransactions from '../pages/reports/DiscountTransactions';
+import ActivityLog from '../pages/reports/ActivityLog';
+import MCreditTransactions from '../pages/reports/MCreditTransactions';
+
+
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
@@ -147,6 +156,14 @@ const PrivateRoutes = () => {
           <Route path='activities/banner/:bannerId' element={<BannerDetail />} />
           <Route path='activities/orders' element={<ActivityOrders />} />
           <Route path='activities/order/:orderId' element={<OrderDetail />} />
+          <Route path='reports' element={<Reports />} />
+          <Route path='reports/agentTransactions' element={<AgentTransactions />} />
+          <Route path='reports/customerTransactions' element={<ReportCustomerTransactions />} />
+          <Route path='reports/referralTransactions' element={<ReferralTransactions />} />
+          <Route path='reports/discountTransactions' element={<DiscountTransactions />} />
+          <Route path='reports/activityLog' element={<ActivityLog />} />
+          <Route path='reports/mcreditsTransactions' element={<MCreditTransactions />} />
+
           <Route path='builder' element={<BuilderPageWrapper />} />
           <Route path='menu-test' element={<MenuTestPage />} />
           {/* Lazy Modules */}

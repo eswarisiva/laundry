@@ -47,6 +47,12 @@ const SidebarMenuMain = () => {
         fontIcon='bi-app-indicator'
       />
 
+      <SidebarMenuItem
+        to='/reports'        icon='element-11'
+        title='REPORTS'
+        fontIcon='bi-app-indicator'
+      />
+
       
     </>
   )
