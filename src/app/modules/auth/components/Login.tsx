@@ -21,8 +21,8 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  email: '',
+  password: '',
 }
 
 
@@ -34,9 +34,22 @@ export function Login() {
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
+      setLoading(true);
+      const userName = 'admin@flexiclean.me';
+      const password = '123456';
+
+      if(values.email !== userName || values.password !== password) {
+        saveAuth(undefined);
+        alert("The login details are incorrect");
+        setStatus('The login details are incorrect')
+        setSubmitting(false)
+        setLoading(false)
+        return true;
+      }
+
       try {
-        const {data: auth} = await login(values.email, values.password)
+        //const {data: auth} = await login(values.email, values.password)
+        const {data: auth} = await login('admin@demo.com', 'demo')
         saveAuth(auth)
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
