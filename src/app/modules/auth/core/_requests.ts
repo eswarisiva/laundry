@@ -9,10 +9,12 @@ export const REGISTER_URL = `${API_URL}/register`;
 export const REQUEST_PASSWORD_URL = `${API_URL}/forgot_password`;
 
 // Server should return AuthModel
-export function login(email: string, password: string) {
+export function login (email: string, password: string) {
   return axios.post<AuthModel>(LOGIN_URL, {
     email,
     password,
+  }).then((response : any) => {
+    return response;
   });
 }
 
@@ -45,3 +47,30 @@ export function getUserByToken(token: string) {
     api_token: token,
   });
 }
+
+
+export function postRequest (URL: string, reqBody: any | null) {
+  const token = localStorage.getItem('token');
+  return axios.post(API_URL+URL, reqBody, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+      }
+    ).then((response : any) => {
+      return response;
+    });
+}
+
+export function deleteRequest(URL: string) {
+
+  const token = localStorage.getItem('token');
+  return axios.delete(API_URL+URL, {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    }
+  }
+  ).then((response : any) => {
+    return response;
+  });
+}
+

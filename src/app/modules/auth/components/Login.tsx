@@ -27,35 +27,28 @@ const initialValues = {
 
 
 export function Login() {
-  const [loading, setLoading] = useState(false)
-  const {saveAuth, setCurrentUser} = useAuth()
+  const [loading, setLoading] = useState(false);
+  const {saveAuth, setCurrentUser} = useAuth();
 
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values, {setStatus, setSubmitting}) => {
       setLoading(true);
-      const userName = 'admin@flexiclean.me';
-      const password = '123456';
-
-      if(values.email !== userName || values.password !== password) {
-        saveAuth(undefined);
-        alert("The login details are incorrect");
-        setStatus('The login details are incorrect')
-        setSubmitting(false)
-        setLoading(false)
-        return true;
-      }
-
       try {
-        //const {data: auth} = await login(values.email, values.password)
-        const {data: auth} = await login('admin@demo.com', 'demo')
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
+        const {data: auth} = await login(values.email, values.password);
+        console.log(auth)
+        if(auth?.status === 'ok') {
+          localStorage.setItem('token', auth?.data?.token);
+          saveAuth(auth);
+          setCurrentUser(auth?.data?.userDetails);
+        } else {
+          alert(`The login details are incorrect`)
+        }
       } catch (error) {
         console.error(error)
         saveAuth(undefined)
+        alert(`The login details are incorrect`)
         setStatus('The login details are incorrect')
         setSubmitting(false)
         setLoading(false)

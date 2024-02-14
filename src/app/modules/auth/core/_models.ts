@@ -3,6 +3,7 @@ export interface AuthModel {
   refreshToken?: string
 }
 
+
 export interface UserAddressModel {
   addressLine: string
   city: string

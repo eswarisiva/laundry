@@ -1,0 +1,59 @@
+/* The alert message box */
+.alert {
+    position: fixed !important;
+    top: 0;
+    width: 60%;
+    margin: auto;
+    z-index: 100;
+    border:none;
+    border-radius: 0 0 1rem 1rem;
+    left: -15%;
+    margin-left: 40%;
+    padding: 20px;
+    color: white;
+
+    span {
+        padding: 0 0 0 1rem ;
+        display: inline-block;
+    }
+
+    .close{
+        text-align: right;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: underline;
+    }
+    .icon{
+        font-size: 1.5rem;
+    }
+    &.alert-success {
+        background: #24ad76;
+    }
+
+    &.alert-danger {
+        background: #a11f29;
+    }
+
+
+}
+  
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
