@@ -61,6 +61,18 @@ export function postRequest (URL: string, reqBody: any | null) {
     });
 }
 
+export function patchRequest (URL: string, reqBody: any | null) {
+  const token = localStorage.getItem('token');
+  return axios.patch(API_URL+URL, reqBody, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+      }
+    ).then((response : any) => {
+      return response;
+    });
+}
+
 export function deleteRequest(URL: string) {
 
   const token = localStorage.getItem('token');

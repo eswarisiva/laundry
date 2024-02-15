@@ -16,17 +16,19 @@ const CurrencyList : FC = () => {
     const [isFailed, setIsFailed] = useState(false);
 
     const deleteCurrency = async (ID : string) => {
-        await deleteRequest(`master/currency/`+ID)
-        .then( async (response) =>  {
-            if(response?.data?.status === 'ok') {
-                setIsSuccess(true);
-                setSuccessMsg(`Currency has been deleted successfully`);
-                await getData();
-            } else {
-                setIsFailed(true);
-                setErrorMsg(`Something Went Wrong`);
-            }
-        });
+        if(window.confirm('Are you sure to delete this record?')) {
+            await deleteRequest(`/master/currency/` + ID)
+                .then(async (response) => {
+                    if (response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`Currency has been deleted successfully`);
+                        await getData();
+                    } else {
+                        setIsFailed(true);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+        }
     }
 
     const getData = async () => {
@@ -87,7 +89,7 @@ const CurrencyList : FC = () => {
                                  rowData.map((result : any) => { 
 
                                     return  (
-                                        <tr>
+                                        <tr key={result?._id} >
                                             <td>{result?.currency}</td>
                                             <td>{result?.currencyCode}</td>
                                             <td>{result?.currencySymbol}</td>

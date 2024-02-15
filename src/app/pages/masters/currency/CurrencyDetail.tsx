@@ -4,7 +4,7 @@ import { PageTitle } from '../../../../_metronic/layout/core';
 import {useFormik} from 'formik';
 import clsx from 'clsx';
 import AlertBox from '../../../../common/AlertBox';
-import { postRequest } from '../../../modules/auth/core/_requests';  
+import { postRequest , patchRequest } from '../../../modules/auth/core/_requests';  
 import { useParams } from 'react-router-dom';
 
 
@@ -48,13 +48,15 @@ const CurrencyDetail : FC = () => {
         decimalPoints: null
     }
 
+    const [formData, setFormData] = useState(initialValues);
+   
     const closeAlert = () => {
         if(isSuccess) setIsSuccess(false);
         if(isFailed) setIsFailed(false);
     }
 
     const formik = useFormik({
-        initialValues,
+        initialValues : formData ,
         enableReinitialize:true,
         validationSchema: currencySchema,
         onSubmit: async (values) => {
@@ -70,27 +72,77 @@ const CurrencyDetail : FC = () => {
         }
 
           try {
-             await postRequest(`/master/currency`, reqBody)
-             .then((response) => {
-                if(response?.data?.status === 'ok') {
-                    setIsSuccess(true);
-                    setSuccessMsg(`Currency has been added successfully`);
-                    setLoading(false);
-                } else {
-                    setIsFailed(true);
-                    setLoading(false);
-                    setErrorMsg(`Something Went Wrong`);
-                }
-             });
+            
+            if(currencyId !== 'create') {
+                await patchRequest(`/master/currency/${currencyId}`, reqBody)
+                .then((response) => {
+                    if(response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`Currency has been updated successfully`);
+                        setLoading(false);
+                    } else {
+                        setIsFailed(true);
+                        setLoading(false);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+            } else {
+                await postRequest(`/master/currency`, reqBody)
+                .then((response) => {
+                    if(response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`Currency has been added successfully`);
+                        setLoading(false);
+                    } else {
+                        setIsFailed(true);
+                        setLoading(false);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+            }
           } catch (error) {
-            setIsFailed(true)
-            setErrorMsg(`Something Went Wrong`)
+            setIsFailed(true);
+            setLoading(false);
+            setErrorMsg(`Something Went Wrong`);
           }
+      
         },
     })
 
+    const getData = async () => {
+
+        if(currencyId) {
+            let reqBody =  {
+                "_id": currencyId
+
+           }   
+
+          await postRequest(`/master/currencies`,reqBody)
+          .then((response) => {
+            if(response?.data?.status === 'ok') {
+                let dataObj = response?.data?.data[0];
+                let initialValues = {
+                    currencyName: dataObj?.currency,
+                    currencyCode: dataObj?.currencyCode,
+                    currencySymbol: dataObj?.currencySymbol,
+                    currencyCents: dataObj?.currencyCents,
+                    centValue: dataObj?.centValue,
+                    decimalPoints: dataObj?.decimalPoints
+                }
+                setFormData(initialValues);
+            }
+          });
+
+        
+        }    
+    }    
+
     useEffect(() => {
 
+        async function loadData () {
+              await getData();   
+        }
+        loadData ();
     },[]) 
 
     return (
@@ -303,7 +355,7 @@ const CurrencyDetail : FC = () => {
           </div>  
 
           { isSuccess && <AlertBox redirectUrl={`/currency`} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
-          { isFailed && <AlertBox   redirectUrl={`/currency`} close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
+          { isFailed && <AlertBox   redirectUrl={null} close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
         </>
     )
 }

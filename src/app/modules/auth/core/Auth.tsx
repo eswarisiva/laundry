@@ -43,6 +43,7 @@ const AuthProvider: FC<WithChildren> = ({children}) => {
   const logout = () => {
     saveAuth(undefined)
     setCurrentUser(undefined)
+    localStorage.setItem('token','');
   }
 
   return (
