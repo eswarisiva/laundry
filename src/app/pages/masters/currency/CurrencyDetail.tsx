@@ -111,7 +111,7 @@ const CurrencyDetail : FC = () => {
 
     const getData = async () => {
 
-        if(currencyId) {
+        if(currencyId !== 'create') {
             let reqBody =  {
                 "_id": currencyId
 
