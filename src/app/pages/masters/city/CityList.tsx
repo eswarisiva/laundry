@@ -1,9 +1,58 @@
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
 import { PageTitle } from '../../../../_metronic/layout/core';
 import { KTIcon } from '../../../../_metronic/helpers';
 import {Link} from 'react-router-dom';
+import { postRequest } from '../../../modules/auth/core/_requests';
+import { stringToDate } from '../../../../common/Date';
+import { deleteRequest } from '../../../modules/auth/core/_requests';
+import AlertBox from '../../../../common/AlertBox';
 
 const CityList : FC = () => {
+
+    const [rowData, setRowData] = useState([]);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [successMsg, setSuccessMsg] = useState(``);
+    const [errorMsg, setErrorMsg] = useState(``);
+    const [isFailed, setIsFailed] = useState(false);
+
+    const closeAlert = () => {
+        if(isSuccess) setIsSuccess(false);
+        if(isFailed) setIsFailed(false);
+    }
+
+    const deleteCity = async (ID : string) => {
+        if(window.confirm('Are you sure to delete this record?')) {
+            await deleteRequest(`/master/city/` + ID)
+                .then(async (response) => {
+                    if (response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`City has been deleted successfully`);
+                        await getData();
+                    } else {
+                        setIsFailed(true);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+        }
+    }
+
+    const getData = async () => {
+        const stateData = await postRequest(`/master/cities`,``);
+        if(stateData?.data?.status === 'ok') {
+            setRowData(stateData?.data?.data);
+        }
+    }
+
+    useEffect(() => {
+        async function loadData() {
+            await getData();
+         }
+
+        loadData();
+    },[])
+
+
+
     return (
         <>
             <PageTitle>CITY</PageTitle>
@@ -34,34 +83,47 @@ const CityList : FC = () => {
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Bahrain</td>
-                                    <td>Manama</td>
-                                    <td>12/11/23 11:45 AM</td>
-                                    <td>Active</td>
+
+                            { 
+                                rowData?.length > 0 ?   
+                                rowData.map((result : any) => { 
+
+                                return  (
+                                <tr key={result?._id}>
+                                    <td>{result?.countryId?.name}</td>
+                                    <td>{result?.name}</td>
+                                    <td>{stringToDate(result?.updated_at)}</td>
+                                    <td>{result?.is_active ? `Active` : `Inactive`}</td>
                                     <td>
                                         <div className='d-flex justify-content-end flex-shrink-0'>
                                         <Link
-                                            to='/city/1234'
+                                            to={`/city/${result?._id}`}
                                             className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'
                                             >
                                             <KTIcon iconName='pencil' className='fs-3' />
                                             </Link>
-                                            <a
-                                            href='#'
-                                            className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'
+                                            <span onClick={(e) => deleteCity(result?._id)}
+                                             className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'
                                             >
                                             <KTIcon iconName='trash' className='fs-3' />
-                                            </a>
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>
+                                   )
+                                })
+                               :
+                                <tr><td>No Cities Found</td></tr>
+                              }
                             </tbody>
                         </table>
                         </div>
                     </div>
                 </div>    
             </div>
+            { isSuccess && <AlertBox redirectUrl={null} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
+            { isFailed && <AlertBox redirectUrl={null}   close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
+  
         </>
     )
 }

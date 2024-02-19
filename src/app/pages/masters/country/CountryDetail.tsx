@@ -7,11 +7,11 @@ import AlertBox from '../../../../common/AlertBox';
 import { postRequest , patchRequest } from '../../../modules/auth/core/_requests';  
 import { useParams } from 'react-router-dom';
 
-const currencySchema = Yup.object().shape({
+const countrySchema = Yup.object().shape({
     name: Yup.string()
       .min(3, 'Minimum 3 Character')
       .max(50, 'Maximum 50 Character')
-      .required('Currency Name is required'),
+      .required(' Name is required'),
     iso2: Yup.string()
       .min(2, 'ISO 2 must be two Characters')
       .max(2, 'ISO 2 must be two Characters')
@@ -59,7 +59,7 @@ const CountryDetail : FC = () => {
     const formik = useFormik({
         initialValues : formData ,
         enableReinitialize:true,
-        validationSchema: currencySchema,
+        validationSchema: countrySchema,
         onSubmit: async (values) => {
           setLoading(true);
 
@@ -113,23 +113,24 @@ const CountryDetail : FC = () => {
 
     
     const getData = async () => {
-        const countryData = await postRequest(`/master/countries`,``);
+        const countryData = countryId !== 'create' ?  await postRequest(`/master/countries`,{"_id": countryId})  : 0;
         const currencyData = await postRequest(`/master/currencies`,``);
 
         const lookupObj = [countryData, currencyData];
-
+        let data1:Array<any>=[];
         return Promise.allSettled(lookupObj)
         .then((result) => {
-            let data  = [];
+           
             result.forEach((res: any) => { 
-                data.push(res.value);
+                data1.push(res.value);
             })
-            return data;
+            return data1;
         })
         .then((d) =>  {
+           
             const dataobj = {
-                countryData : d[0]?.data?.status === 'ok' ? d[0]?.data?.data[0] : 0 ,
-                currencyData : d[0]?.data?.status === 'ok' ? d[1]?.data?.data : [] ,
+                countryData : d[0] && d[0]?.data?.status === 'ok' ? d[0]?.data?.data[0] : 0 ,
+                currencyData : d[1]?.data?.status === 'ok' ? d[1]?.data?.data : [] ,
             }
             setCurrencyList(dataobj?.currencyData);
 

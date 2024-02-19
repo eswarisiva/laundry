@@ -1,9 +1,56 @@
-import {FC} from 'react';
+import {FC,useEffect, useState} from 'react';
 import { PageTitle } from '../../../../_metronic/layout/core';
 import { KTIcon } from '../../../../_metronic/helpers';
 import {Link} from 'react-router-dom';
+import { postRequest } from '../../../modules/auth/core/_requests';
+import { stringToDate } from '../../../../common/Date';
+import { deleteRequest } from '../../../modules/auth/core/_requests';
+import AlertBox from '../../../../common/AlertBox';
 
 const StateList : FC = () => {
+
+    const [rowData, setRowData] = useState([]);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [successMsg, setSuccessMsg] = useState(``);
+    const [errorMsg, setErrorMsg] = useState(``);
+    const [isFailed, setIsFailed] = useState(false);
+
+    const closeAlert = () => {
+        if(isSuccess) setIsSuccess(false);
+        if(isFailed) setIsFailed(false);
+    }
+
+    const getData = async () => {
+        const stateData = await postRequest(`/master/states`,``);
+        if(stateData?.data?.status === 'ok') {
+            setRowData(stateData?.data?.data);
+        }
+    }
+
+    const deleteState = async (ID : string) => {
+        if(window.confirm('Are you sure to delete this record?')) {
+            await deleteRequest(`/master/state/` + ID)
+                .then(async (response) => {
+                    if (response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`State has been deleted successfully`);
+                        await getData();
+                    } else {
+                        setIsFailed(true);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+        }
+    }
+
+    useEffect(() => {
+        async function loadData() {
+            await getData();
+         }
+
+        loadData();
+    },[])
+
     return (
         <>
             <PageTitle>STATE / PROVINCES</PageTitle>
@@ -35,35 +82,47 @@ const StateList : FC = () => {
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>UAE</td>
-                                    <td>N/A</td>
-                                    <td>No</td>
-                                    <td>12/10/2024</td>
-                                    <td>Active</td>
+                            { 
+                                rowData?.length > 0 ?   
+                                rowData.map((result : any) => { 
+
+                                return  (
+                                <tr key={result?._id} > 
+                                    <td>{result?.countryId?.name}</td>
+                                    <td>{result?.name}</td>
+                                    <td>{result?.hasState ? `YES`: `NO`}</td>
+                                    <td>{stringToDate(result?.updated_at)}</td>
+                                    <td>{result?.is_active ? `Active` : `Inactive`}</td>
                                     <td>
                                         <div className='d-flex justify-content-end flex-shrink-0'>
                                         <Link
-                                            to='/state/1234'
+                                            to={`/state/${result?._id}`}
                                             className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'
                                             >
                                             <KTIcon iconName='pencil' className='fs-3' />
                                             </Link>
-                                            <a
-                                            href='#'
+                                            <span onClick={(e) => deleteState(result?._id)}
                                             className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'
                                             >
                                             <KTIcon iconName='trash' className='fs-3' />
-                                            </a>
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>
+                                   )
+                                })
+                               :
+                                <tr><td>No States Found</td></tr>
+                              }
                             </tbody>
                         </table>
                         </div>
                     </div>
                 </div>    
             </div>
+            { isSuccess && <AlertBox redirectUrl={null} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
+            { isFailed && <AlertBox redirectUrl={null}   close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
+  
         </>
     )
 }

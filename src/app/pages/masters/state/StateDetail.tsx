@@ -1,8 +1,135 @@
-import {FC , useState} from 'react';
+import {FC , useState, useEffect} from 'react';
+import * as Yup from 'yup';
 import { PageTitle } from '../../../../_metronic/layout/core';
+import {useFormik} from 'formik';
+import clsx from 'clsx';
+import AlertBox from '../../../../common/AlertBox';
+import { postRequest , patchRequest } from '../../../modules/auth/core/_requests';  
+import { useParams } from 'react-router-dom';
+
+const stateSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(3, 'Minimum 3 Character')
+      .max(50, 'Maximum 50 Character')
+      .required('State Name is required'),
+    countryId : Yup.string()
+       .required('Country Id is required'),   
+})
 
 const StateDetail : FC = () => {
     const [loading, setLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [successMsg, setSuccessMsg] = useState(``);
+    const [errorMsg, setErrorMsg] = useState(``);
+    const [isFailed, setIsFailed] = useState(false);
+    const {stateId} = useParams();
+
+    const initialValues = {
+        name: null,
+        countryId: null,
+    }
+
+    const [formData, setFormData] = useState(initialValues);
+    const [countryList, setCountryList] = useState([]);
+
+    const closeAlert = () => {
+        if(isSuccess) setIsSuccess(false);
+        if(isFailed) setIsFailed(false);
+    }
+
+    const formik = useFormik({
+        initialValues : formData ,
+        enableReinitialize:true,
+        validationSchema: stateSchema,
+        onSubmit: async (values) => {
+          setLoading(true);
+
+            let reqBody = {
+                name : values?.name,
+                countryId : values?.countryId,
+            }
+
+          try {
+            
+            if(stateId !== 'create') {
+                await patchRequest(`/master/state/${stateId}`, reqBody)
+                .then((response) => {
+                    if(response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`State has been updated successfully`);
+                        setLoading(false);
+                    } else {
+                        setIsFailed(true);
+                        setLoading(false);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+            } else {
+                await postRequest(`/master/state`, reqBody)
+                .then((response) => {
+                    if(response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`State has been added successfully`);
+                        setLoading(false);
+                    } else {
+                        setIsFailed(true);
+                        setLoading(false);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+            }
+          } catch (error) {
+            setIsFailed(true);
+            setLoading(false);
+            setErrorMsg(`Something Went Wrong`);
+          }
+      
+        },
+    })
+
+    const getData = async () => {
+        const countryData = await postRequest(`/master/countries`,``);
+        const stateData =  stateId !== 'create' ?  await postRequest(`/master/states`,{"_id": stateId}) : 0;
+
+        const lookupObj = [countryData, stateData];
+        let data1:Array<any>=[];
+        return Promise.allSettled(lookupObj)
+        .then((result) => {
+           
+            result.forEach((res: any) => { 
+                data1.push(res.value);
+            })
+            return data1;
+        })
+        .then((d) =>  {
+           
+            const dataobj = {
+                countryData : d[0]?.data?.status === 'ok' ? d[0]?.data?.data : 0 ,
+                stateData : d[1] && d[1]?.data?.status === 'ok' ? d[1]?.data?.data[0] : [] ,
+            }
+            setCountryList(dataobj?.countryData);
+
+            if(dataobj?.stateData) {
+                const initialValues = {
+                    name: dataobj?.stateData?.name,
+                    countryId:  dataobj?.stateData?.countryId?._id,
+                }
+                setFormData(initialValues);
+            }
+
+
+        })
+
+    }
+    
+    useEffect(() => {
+
+        async function loadData () {
+              await getData();   
+        }
+        loadData ();
+    },[]) 
+
 
     return (
         <>
@@ -12,22 +139,43 @@ const StateDetail : FC = () => {
                 <div className={`card `}>
 
                     <div className='card-body py-3'>
-                        <form noValidate className='form'>
-                            <div className='row mb-12'>
-                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Country Name</label>
+                     <form 
+                        onSubmit={formik.handleSubmit}                            
+                        noValidate className='form'>
+                        <div className='row mb-12'>
+                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Country</label>
 
                                 <div className='col-lg-8'>
                                     <div className='row'>
                                         <div className='col-lg-12 fv-row'>
-                                            <input
-                                            type='text'
-                                            className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
-                                            placeholder='Enter Country Name'
-                                            />
+                                        <select
+
+                                            {...formik.getFieldProps('countryId')}
+                                            className={clsx(
+                                                'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                                {'is-invalid': formik.touched.countryId && formik.errors.countryId},
+                                                {
+                                                  'is-valid': formik.touched.countryId && !formik.errors.countryId,
+                                                }
+                                              )}
+                                            >
+                                            <option value=''>Select a Country...</option>
+                                            {
+                                            countryList.map((e :any) => {
+                                               return <option value={e._id}>{e.iso3} - {e.name}</option>
+                                            }  )}
+                                        </select>
+
+                                        {formik.touched.countryId && formik.errors.countryId && (
+                                                <div style={{color: 'red'}} className='fv-plugins-message-container'>
+                                                    <span role='alert'>{formik.errors.countryId
+                                                    }</span>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
-                            </div>   
+                            </div>  
 
                             <div className='row mb-12'>
                                 <label className='col-lg-4 col-form-label required fw-bold fs-6'>State / Province</label>
@@ -36,10 +184,22 @@ const StateDetail : FC = () => {
                                     <div className='row'>
                                         <div className='col-lg-12 fv-row'>
                                             <input
+                                            {...formik.getFieldProps('name')}
                                             type='text'
-                                            className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                            className={clsx(
+                                                'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                                {'is-invalid': formik.touched.name && formik.errors.name},
+                                                {
+                                                  'is-valid': formik.touched.name && !formik.errors.name,
+                                                }
+                                              )}
                                             placeholder='Enter State / Province'
                                             />
+                                             {formik.touched.name && formik.errors.name && (
+                                                <div style={{color: 'red'}} className='fv-plugins-message-container'>
+                                                    <span role='alert'>{formik.errors.name}</span>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +219,11 @@ const StateDetail : FC = () => {
                         </form>    
                     </div>
                 </div>    
-            </div>  
+            </div> 
+
+            { isSuccess && <AlertBox redirectUrl={`/state`} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
+            { isFailed && <AlertBox   redirectUrl={null} close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
+      
         </>
     )
 } 

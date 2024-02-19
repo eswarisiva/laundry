@@ -109,7 +109,7 @@ const CountryList : FC = () => {
                                             <td>{result?.iso3}</td>
                                             <td>{result?.hasState ? `YES`: `NO`}</td>
                                             <td>{stringToDate(result?.updated_at)}</td>
-                                            <td>Active</td>
+                                            <td>{result?.is_active ? `Active` : `Inactive`}</td>
                                             <td>
                                                 <div className='d-flex justify-content-end flex-shrink-0'>
                                                     <Link
