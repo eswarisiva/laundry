@@ -17,6 +17,9 @@ import CityList from '../pages/masters/city/CityList';
 import CityDetail from '../pages/masters/city/CityDetail';
 import AreaList from '../pages/masters/area/AreaList';
 import AreaDetail from '../pages/masters/area/AreaDetail';
+import ServiceList from '../pages/masters/service/ServiceList';
+import ServiceDetail from '../pages/masters/service/ServiceDetail';
+
 import CategoryList from '../pages/masters/category/CategoryList';
 import CategoryDetail from '../pages/masters/category/CategoryDetail';
 import ItemList from '../pages/masters/items/ItemList';
@@ -108,7 +111,9 @@ const PrivateRoutes = () => {
           <Route path='city/:cityId' element={<CityDetail />} />
           <Route path='area' element={<AreaList />} />
           <Route path='area/:areaId' element={<AreaDetail />} />
-          <Route path='category' element={<CategoryList />} />
+          <Route path='service' element={<ServiceList />} />
+          <Route path='service/:serviceId' element={<ServiceDetail />} />
+           <Route path='category' element={<CategoryList />} />
           <Route path='category/:categoryId' element={<CategoryDetail />} />
           <Route path='item' element={<ItemList />} />
           <Route path='item/:itemId' element={<ItemDetail />} />

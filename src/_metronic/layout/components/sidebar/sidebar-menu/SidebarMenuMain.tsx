@@ -23,6 +23,7 @@ const SidebarMenuMain = () => {
          <SidebarMenuItem to='/state' title='State / Provinces' fontIcon='bi-layers' />
          <SidebarMenuItem to='/city' title='City' fontIcon='bi-layers' />
          <SidebarMenuItem to='/area' title='Area' fontIcon='bi-layers' />
+         <SidebarMenuItem to='/service' title='Service' fontIcon='bi-layers' />
          <SidebarMenuItem to='/category' title='Category' fontIcon='bi-layers' />
          <SidebarMenuItem to='/item' title='Items' fontIcon='bi-layers' />
       </SidebarMenuItemWithSub>

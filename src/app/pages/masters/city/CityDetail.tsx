@@ -13,9 +13,9 @@ const citySchema = Yup.object().shape({
       .max(50, 'Maximum 50 Character')
       .required('City Name is required'),
     stateId : Yup.string()
-      .required('Country Id is required'), 
+      .required('State is required'), 
     countryId : Yup.string()
-       .required('Country Id is required'),   
+       .required('Country is required'),   
 })
 
 
@@ -121,7 +121,7 @@ const CityDetail : FC = () => {
 
             if(dataobj?.cityData) {
                 const initialValues = {
-                    name: dataobj?.stateData?.name,
+                    name: dataobj?.cityData?.name,
                     countryId:  dataobj?.cityData?.countryId?._id,
                     stateId:  dataobj?.cityData?.stateId?._id,
                 }
@@ -257,6 +257,9 @@ const CityDetail : FC = () => {
                     </div>
                 </div>    
             </div>  
+            { isSuccess && <AlertBox redirectUrl={`/city`} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
+            { isFailed && <AlertBox   redirectUrl={null} close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
+     
         </>
     )
 } 

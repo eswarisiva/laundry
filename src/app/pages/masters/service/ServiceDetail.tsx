@@ -7,41 +7,36 @@ import AlertBox from '../../../../common/AlertBox';
 import { postRequest , patchRequest } from '../../../modules/auth/core/_requests';  
 import { useParams } from 'react-router-dom';
 
-const categorySchema = Yup.object().shape({
-    categoryName: Yup.string()
+const serviceSchema = Yup.object().shape({
+    serviceName: Yup.string()
       .min(3, 'Minimum 3 Character')
       .max(50, 'Maximum 50 Character')
-      .required('Category Name is required'),
-    homeScreenOrderNo : Yup.number()
-      .required('Home Screen Order No is required'),  
-    serviceId : Yup.string()
-      .required('Home Screen Order No is required'), 
+      .required('Service Name is required'),
+    description : Yup.string()
+      .required('Description is required'), 
     orderNo : Yup.number()
       .required('Order Number is required'), 
     icon : Yup.mixed()
        .required('Icon is required'),   
 })
 
-const CategoryDetail : FC = () => {
+const ServiceDetail : FC = () => {
 
     const [loading, setLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [successMsg, setSuccessMsg] = useState(``);
     const [errorMsg, setErrorMsg] = useState(``);
     const [isFailed, setIsFailed] = useState(false);
-    const {categoryId} = useParams();
+    const {serviceId} = useParams();
 
     const initialValues = {
-        categoryName: null,
-        homeScreenOrderNo: null,
-        isDisplayOnHome: null,
+        serviceName: null,
+        description: null,
         icon: null,
-        serviceId: null,
         orderNo: null
     }
 
     const [formData, setFormData] = useState(initialValues);
-    const [serviceList, setServiceList] = useState([]);
 
     const closeAlert = () => {
         if(isSuccess) setIsSuccess(false);
@@ -51,16 +46,14 @@ const CategoryDetail : FC = () => {
     const formik = useFormik({
         initialValues : formData ,
         enableReinitialize:true,
-        validationSchema: categorySchema,
+        validationSchema: serviceSchema,
         onSubmit: async (values) => {
             setLoading(true);
 
             let dataObj =  {
-                categoryName : values?.categoryName,
+                serviceName : values?.serviceName,
                 orderNo: values?.orderNo,
-                isDisplayOnHome: values?.isDisplayOnHome,
-                serviceId: values?.serviceId,
-                homeOrderNo: values?.homeScreenOrderNo,
+                description: values?.description,
             }
             const formData = new FormData();
             formData.append("icon", values?.icon);
@@ -68,12 +61,12 @@ const CategoryDetail : FC = () => {
 
           try {
             
-            if(categoryId !== 'create') {
-                await patchRequest(`/master/category/${categoryId}`, formData)
+            if(serviceId !== 'create') {
+                await patchRequest(`/master/service/${serviceId}`, formData)
                 .then((response) => {
                     if(response?.data?.status === 'ok') {
                         setIsSuccess(true);
-                        setSuccessMsg(`Category has been updated successfully`);
+                        setSuccessMsg(`Service has been updated successfully`);
                         setLoading(false);
                     } else {
                         setIsFailed(true);
@@ -82,11 +75,11 @@ const CategoryDetail : FC = () => {
                     }
                 });
             } else {
-                await postRequest(`/master/category`, formData)
+                await postRequest(`/master/service`, formData)
                 .then((response) => {
                     if(response?.data?.status === 'ok') {
                         setIsSuccess(true);
-                        setSuccessMsg(`Category has been added successfully`);
+                        setSuccessMsg(`Service has been added successfully`);
                         setLoading(false);
                     } else {
                         setIsFailed(true);
@@ -105,14 +98,14 @@ const CategoryDetail : FC = () => {
     })
 
     const getData = async () => {
-        const categoryData =  categoryId !== 'create' ?   await postRequest(`/master/categories`, {"_id": categoryId} ) : 0;
-        const serviceData =   await postRequest(`/master/services`, `` );
+        const serviceData =  serviceId !== 'create' ?   await postRequest(`/master/services`, {"_id": serviceId} ) : 0;
        
-        const lookupObj = [categoryData, serviceData];
+        const lookupObj = [serviceData];
         let data1:Array<any>=[];
         return Promise.allSettled(lookupObj)
         .then((result) => {
-             result.forEach((res: any) => { 
+           
+            result.forEach((res: any) => { 
                 data1.push(res.value);
             })
             return data1;
@@ -120,19 +113,15 @@ const CategoryDetail : FC = () => {
         .then((d) =>  {
            
             const dataobj = {
-                 categoryDataData :  d[0] && d[0]?.data?.status === 'ok' ? d[0]?.data?.data[0] : [] ,
-                 serviceData :  d[1] && d[1]?.data?.status === 'ok' ? d[1]?.data?.data : [] ,
+                 serviceData :  d[0] && d[0]?.data?.status === 'ok' ? d[0]?.data?.data[0] : [] ,
             }
-            setServiceList(dataobj?.serviceData);
 
-            if(dataobj?.categoryDataData) {
+            if(dataobj?.serviceData) {
                 const initialValues = {
-                    categoryName: dataobj?.categoryDataData?.categoryName,
-                    isDisplayOnHome:  dataobj?.categoryDataData?.isDisplayOnHome,
-                    serviceId:  dataobj?.categoryDataData?.serviceId?._id,
-                    homeScreenOrderNo:  dataobj?.categoryDataData?.homeOrderNo,
-                    icon:  dataobj?.categoryDataData?.icon,
-                    orderNo: dataobj?.categoryDataData?.orderNo,
+                    serviceName: dataobj?.serviceData?.serviceName,
+                    description:  dataobj?.serviceData?.description,
+                    icon:  dataobj?.serviceData?.icon,
+                    orderNo: dataobj?.serviceData?.orderNo,
                 }
                 setFormData(initialValues);
             }
@@ -152,40 +141,40 @@ const CategoryDetail : FC = () => {
 
 
 
+
+
     return (
         <>
-            <PageTitle>ADD/UPDATE CATEGORY</PageTitle>
+            <PageTitle>ADD/UPDATE SERVICE</PageTitle>
 
             <div className='row g-5 g-xl-8'>
+
                 <div className={`card `}>
 
                     <div className='card-body py-3'>
                         <form onSubmit={formik.handleSubmit} noValidate className='form'>
+
                             <div className='row mb-12'>
-                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Service</label>
+                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Service Name</label>
 
                                 <div className='col-lg-8'>
                                     <div className='row'>
-                                        <div className='col-lg-9 fv-row'>
-                                            <select
-                                                {...formik.getFieldProps('serviceId')}
+                                        <div className='col-lg-12 fv-row'>
+                                            <input
+                                                type='text'
+                                                {...formik.getFieldProps('serviceName')}
                                                 className={clsx(
                                                     'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
-                                                    {'is-invalid': formik.touched.serviceId && formik.errors.serviceId},
+                                                    { 'is-invalid': formik.touched.serviceName && formik.errors.serviceName },
                                                     {
-                                                      'is-valid': formik.touched.serviceId && !formik.errors.serviceId,
+                                                        'is-valid': formik.touched.serviceName && !formik.errors.serviceName,
                                                     }
-                                                  )}
-                                            >
-                                                <option value=''>Select a Service...</option>
-                                                {
-                                                serviceList.map((e :any) => {
-                                                return <option value={e._id}>{e.serviceName}</option>
-                                                }  )}
-                                            </select>
-                                            {formik.touched.serviceId && formik.errors.serviceId && (
-                                                <div style={{color: 'red'}} className='fv-plugins-message-container'>
-                                                    <span role='alert'>{formik.errors.serviceId
+                                                )}
+                                                placeholder='Enter Service Name'
+                                            />
+                                            {formik.touched.serviceName && formik.errors.serviceName && (
+                                                <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                                    <span role='alert'>{formik.errors.serviceName
                                                     }</span>
                                                 </div>
                                             )}
@@ -195,26 +184,57 @@ const CategoryDetail : FC = () => {
                             </div>
 
                             <div className='row mb-12'>
-                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Category Name</label>
+                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Description</label>
 
                                 <div className='col-lg-8'>
                                     <div className='row'>
                                         <div className='col-lg-12 fv-row'>
                                             <input
-                                                 {...formik.getFieldProps('categoryName')}
-                                                 type='text'
-                                                 className={clsx(
-                                                     'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
-                                                     {'is-invalid': formik.touched.categoryName && formik.errors.categoryName},
-                                                     {
-                                                       'is-valid': formik.touched.categoryName && !formik.errors.categoryName,
-                                                     }
-                                                   )}
-                                                placeholder='Enter Category'
+                                                type='text'
+                                                {...formik.getFieldProps('description')}
+                                                className={clsx(
+                                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                                    { 'is-invalid': formik.touched.description && formik.errors.description },
+                                                    {
+                                                        'is-valid': formik.touched.description && !formik.errors.description,
+                                                    }
+                                                )}
+                                                placeholder='Enter Description'
                                             />
-                                               {formik.touched.categoryName && formik.errors.categoryName && (
-                                                <div style={{color: 'red'}} className='fv-plugins-message-container'>
-                                                    <span role='alert'>{formik.errors.categoryName}</span>
+                                            {formik.touched.description && formik.errors.description && (
+                                                <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                                    <span role='alert'>{formik.errors.description
+                                                    }</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className='row mb-12'>
+                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Order No</label>
+
+                                <div className='col-lg-8'>
+                                    <div className='row'>
+                                        <div className='col-lg-12 fv-row'>
+                                            <input
+                                                type='text'
+                                                {...formik.getFieldProps('orderNo')}
+                                                className={clsx(
+                                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                                    { 'is-invalid': formik.touched.orderNo && formik.errors.orderNo },
+                                                    {
+                                                        'is-valid': formik.touched.orderNo && !formik.errors.orderNo,
+                                                    }
+                                                )}
+                                                placeholder='Enter Order No'
+                                            />
+                                            {formik.touched.orderNo && formik.errors.orderNo && (
+                                                <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                                    <span role='alert'>{formik.errors.orderNo
+                                                    }</span>
                                                 </div>
                                             )}
                                         </div>
@@ -252,91 +272,6 @@ const CategoryDetail : FC = () => {
                                 </div>
                             </div>
 
-                            <div className='row mb-12'>
-                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Order No</label>
-
-                                <div className='col-lg-8'>
-                                    <div className='row'>
-                                        <div className='col-lg-12 fv-row'>
-                                            <input
-                                                type='text'
-                                                {...formik.getFieldProps('orderNo')}
-                                                className={clsx(
-                                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
-                                                    { 'is-invalid': formik.touched.orderNo && formik.errors.orderNo },
-                                                    {
-                                                        'is-valid': formik.touched.orderNo && !formik.errors.orderNo,
-                                                    }
-                                                )}
-                                                placeholder='Enter Order No'
-                                            />
-                                            {formik.touched.orderNo && formik.errors.orderNo && (
-                                                <div style={{ color: 'red' }} className='fv-plugins-message-container'>
-                                                    <span role='alert'>{formik.errors.orderNo
-                                                    }</span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='row mb-12'>
-                                <label className='col-lg-4 col-form-label required fw-bold fs-6'>Home Screen Order No</label>
-
-                                <div className='col-lg-8'>
-                                    <div className='row'>
-                                        <div className='col-lg-12 fv-row'>
-                                            <input
-                                                type='text'
-                                                {...formik.getFieldProps('homeScreenOrderNo')}
-                                                className={clsx(
-                                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
-                                                    { 'is-invalid': formik.touched.homeScreenOrderNo && formik.errors.homeScreenOrderNo },
-                                                    {
-                                                        'is-valid': formik.touched.homeScreenOrderNo && !formik.errors.homeScreenOrderNo,
-                                                    }
-                                                )}
-                                                placeholder='Enter Order No'
-                                            />
-                                            {formik.touched.homeScreenOrderNo && formik.errors.homeScreenOrderNo && (
-                                                <div style={{ color: 'red' }} className='fv-plugins-message-container'>
-                                                    <span role='alert'>{formik.errors.homeScreenOrderNo
-                                                    }</span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='row mb-12'>
-                                <label className='col-lg-4 col-form-label fw-bold fs-6'>Display In Home</label>
-
-                                <div className='col-lg-8'>
-                                    <div className='row'>
-                                        <div className='col-lg-12 fv-row'>
-                                            <div className='form-check form-check-sm form-check-custom form-check-solid'>
-                                                <input
-                                                    className='form-check-input'
-                                                    type='checkbox'
-                                                    {...formik.getFieldProps('isDisplayOnHome')}
-                                                    
-                                                    data-kt-check= {formik.getFieldProps('isDisplayOnHome')}
-                                                    data-kt-check-target='.widget-9-check'
-                                                />
-                                                 {formik.touched.isDisplayOnHome && formik.errors.isDisplayOnHome && (
-                                                <div style={{ color: 'red' }} className='fv-plugins-message-container'>
-                                                    <span role='alert'>{formik.errors.isDisplayOnHome
-                                                    }</span>
-                                                </div>
-                                            )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div className='card-footer d-flex justify-content-end py-6 px-9'>
                                 <button type='submit' className='btn btn-primary' disabled={loading}>
                                     {!loading && 'Save Changes'}
@@ -350,12 +285,15 @@ const CategoryDetail : FC = () => {
                             </div>
                         </form>
                     </div></div>
+
+
             </div>
-            { isSuccess && <AlertBox redirectUrl={`/category`} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
+
+            { isSuccess && <AlertBox redirectUrl={`/service`} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
             { isFailed && <AlertBox   redirectUrl={null} close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
-     
+  
         </>
     )
 }
 
-export default CategoryDetail;
+export default ServiceDetail;
