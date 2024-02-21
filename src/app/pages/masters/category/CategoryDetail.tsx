@@ -15,7 +15,7 @@ const categorySchema = Yup.object().shape({
     homeScreenOrderNo : Yup.number()
       .required('Home Screen Order No is required'),  
     serviceId : Yup.string()
-      .required('Home Screen Order No is required'), 
+      .required('Service is required'), 
     orderNo : Yup.number()
       .required('Order Number is required'), 
     icon : Yup.mixed()

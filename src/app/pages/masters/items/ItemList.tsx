@@ -1,10 +1,58 @@
-import {FC , useState} from 'react';
+import {FC , useEffect, useState} from 'react';
 import { PageTitle } from '../../../../_metronic/layout/core';
 import { KTIcon } from '../../../../_metronic/helpers';
 import { toAbsoluteUrl } from '../../../../_metronic/helpers';
 import {Link} from 'react-router-dom';
+import { postRequest } from '../../../modules/auth/core/_requests';
+import { stringToDate } from '../../../../common/Date';
+import { deleteRequest } from '../../../modules/auth/core/_requests';
+import AlertBox from '../../../../common/AlertBox';
 
 const ItemList : FC = () => {
+
+    const [rowData, setRowData] = useState([]);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [successMsg, setSuccessMsg] = useState(``);
+    const [errorMsg, setErrorMsg] = useState(``);
+    const [isFailed, setIsFailed] = useState(false);
+
+    const closeAlert = () => {
+        if(isSuccess) setIsSuccess(false);
+        if(isFailed) setIsFailed(false);
+    }
+
+    const getData = async () => {
+        const stateData = await postRequest(`/master/products`,``);
+        if(stateData?.data?.status === 'ok') {
+            setRowData(stateData?.data?.data);
+        }
+    }
+
+    const deleteItem= async (ID : string) => {
+        if(window.confirm('Are you sure to delete this record?')) {
+            await deleteRequest(`/master/product/` + ID)
+                .then(async (response) => {
+                    if (response?.data?.status === 'ok') {
+                        setIsSuccess(true);
+                        setSuccessMsg(`Item has been deleted successfully`);
+                        await getData();
+                    } else {
+                        setIsFailed(true);
+                        setErrorMsg(`Something Went Wrong`);
+                    }
+                });
+        }
+    }
+
+    useEffect(() => {
+        async function loadData() {
+            await getData();
+         }
+
+        loadData();
+    },[])
+
+
     return (
         <>
             <PageTitle>ITEMS</PageTitle>
@@ -36,6 +84,12 @@ const ItemList : FC = () => {
                             </tr>
                             </thead>
                             <tbody>
+
+                            { 
+                                rowData?.length > 0 ?   
+                                rowData.map((result : any) => { 
+
+                                return  (
                                 <tr>
                                     <td>
                                         <div className='d-flex align-items-center'>
@@ -44,27 +98,37 @@ const ItemList : FC = () => {
                                             </div>
                                         </div>    
                                     </td>
-                                    <td>Shirt</td>
+                                    <td>{result?.productName}</td>
                                     <td>Laundry</td>
-                                    <td>12/05/21</td>
-                                    <td>Active</td>
+                                    <td>{stringToDate(result?.updated_by || result?.updated_at )}</td>
+                                    <td>{result?.is_active ? `Active` : `Inactive`}</td>
                                     <td>
                                     <div className='d-flex justify-content-end flex-shrink-0'>
-                                        <Link to='/item/1234' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
+                                        <Link to={`/item/${result?._id}`} className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1'>
                                             <KTIcon iconName='pencil' className='fs-3' />
                                         </Link>
-                                        <a href='#' className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
+                                        <span onClick={(e) => deleteItem(result?._id)} className='btn btn-icon btn-bg-light btn-active-color-primary btn-sm'>
                                             <KTIcon iconName='trash' className='fs-3' />
-                                        </a>
+                                        </span>
                                     </div>
                                     </td>
                                 </tr>
+                                    )
+                                })
+                               :
+                                <tr><td>No Items Found</td></tr>
+                              }
+
                             </tbody>
                         </table>
                         </div>
                     </div>
                 </div>    
             </div>  
+
+            { isSuccess && <AlertBox redirectUrl={`/area`} close={closeAlert} type={`success`}>{successMsg}</AlertBox> }
+        { isFailed && <AlertBox   redirectUrl={null} close={closeAlert} type={`error`}>{errorMsg}</AlertBox> }
+
         </>
     )
 }
