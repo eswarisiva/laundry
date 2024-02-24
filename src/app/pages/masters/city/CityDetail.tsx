@@ -28,9 +28,9 @@ const CityDetail : FC = () => {
     const {cityId} = useParams();
 
     const initialValues = {
-        name: null,
-        stateId: null,
-        countryId: null,
+        name: '',
+        stateId: '',
+        countryId: '',
     }
 
     const [formData, setFormData] = useState(initialValues);

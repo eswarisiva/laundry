@@ -32,11 +32,11 @@ const AreaDetail : FC = () => {
     const {areaId} = useParams();
 
     const initialValues = {
-        name: null,
-        stateId: null,
-        countryId: null,
-        cityId: null,
-        zipcode: null
+        name: '',
+        stateId: '',
+        countryId: '',
+        cityId: '',
+        zipcode: ''
     }
 
     const [formData, setFormData] = useState(initialValues);

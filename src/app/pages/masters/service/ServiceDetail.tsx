@@ -30,10 +30,10 @@ const ServiceDetail : FC = () => {
     const {serviceId} = useParams();
 
     const initialValues = {
-        serviceName: null,
-        description: null,
-        icon: null,
-        orderNo: null
+        serviceName: '',
+        description: '',
+        icon: '',
+        orderNo: ''
     }
 
     const [formData, setFormData] = useState(initialValues);

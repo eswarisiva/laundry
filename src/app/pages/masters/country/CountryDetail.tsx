@@ -39,12 +39,12 @@ const CountryDetail : FC = () => {
     const {countryId} = useParams();
 
     const initialValues = {
-        name: null,
-        iso2: null,
-        iso3: null,
-        dialCode: null,
-        currencyId: null,
-        hasState: null
+        name: '',
+        iso2: '',
+        iso3: '',
+        dialCode: '',
+        currencyId: '',
+        hasState: ''
     }
 
     const [formData, setFormData] = useState(initialValues);

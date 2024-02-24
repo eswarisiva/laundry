@@ -40,12 +40,12 @@ const CurrencyDetail : FC = () => {
     const [isFailed, setIsFailed] = useState(false);
     const {currencyId} = useParams();
     const initialValues = {
-        currencyName: null,
-        currencyCode: null,
-        currencySymbol: null,
-        currencyCents: null,
-        centValue: null,
-        decimalPoints: null
+        currencyName: '',
+        currencyCode: '',
+        currencySymbol: '',
+        currencyCents: '',
+        centValue: '',
+        decimalPoints: ''
     }
 
     const [formData, setFormData] = useState(initialValues);

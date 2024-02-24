@@ -32,11 +32,11 @@ const ItemDetail : FC = () => {
     const {itemId} = useParams();
 
     const initialValues = {
-        productName: null,
-        shortDesc: null,
-        icon: null,
-        serviceId: null,
-        categoryId: null
+        productName: '',
+        shortDesc: '',
+        icon: '',
+        serviceId: '',
+        categoryId: ''
     }
 
     const [formData, setFormData] = useState(initialValues);

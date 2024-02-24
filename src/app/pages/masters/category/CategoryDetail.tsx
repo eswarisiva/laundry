@@ -32,12 +32,12 @@ const CategoryDetail : FC = () => {
     const {categoryId} = useParams();
 
     const initialValues = {
-        categoryName: null,
-        homeScreenOrderNo: null,
-        isDisplayOnHome: null,
-        icon: null,
-        serviceId: null,
-        orderNo: null
+        categoryName: '',
+        homeScreenOrderNo: '',
+        isDisplayOnHome: false,
+        icon: '',
+        serviceId: '',
+        orderNo: ''
     }
 
     const [formData, setFormData] = useState(initialValues);
@@ -321,7 +321,8 @@ const CategoryDetail : FC = () => {
                                                     className='form-check-input'
                                                     type='checkbox'
                                                     {...formik.getFieldProps('isDisplayOnHome')}
-                                                    
+                                                    //checked= {formik.getFieldProps('isDisplayOnHome')}
+                                                    checked={formik?.values?.isDisplayOnHome}
                                                     data-kt-check= {formik.getFieldProps('isDisplayOnHome')}
                                                     data-kt-check-target='.widget-9-check'
                                                 />
