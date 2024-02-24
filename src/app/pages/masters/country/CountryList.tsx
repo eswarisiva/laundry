@@ -20,14 +20,13 @@ const CountryList : FC = () => {
         const countryData = await postRequest(`/master/countries`,``);
 
         const lookupObj = [countryData];
-
+        let data1:Array<any>=[];
         return Promise.allSettled(lookupObj)
         .then((result) => {
-            let data  = [];
             result.forEach((res: any) => { 
-                data.push(res.value);
+                data1.push(res.value);
             })
-            return data;
+            return data1;
         })
         .then((d) =>  {
             const dataobj = {
