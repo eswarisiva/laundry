@@ -1,6 +1,7 @@
-import {FC} from 'react';
+import React, {memo} from 'react';
+import clsx from 'clsx';
 
-const Account : FC = () => {
+const Account = (props:any) => {
 
     return (
         <>
@@ -12,10 +13,22 @@ const Account : FC = () => {
                         <div className='col-lg-12 fv-row'>
                             <input
                                 type='text'
-                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                className={clsx(
+                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                    { 'is-invalid': props?.formik.touched.mobile && props?.formik.errors.mobile },
+                                    {
+                                        'is-valid': props?.formik.touched.mobile && !props?.formik.errors.mobile,
+                                    }
+                                )}
                                 placeholder='Enter Mobile Number'
-                                value={`+973-33332222`}
+                                {...props?.formik.getFieldProps('mobile')}
                             />
+                            {props?.formik.touched.mobile && props?.formik.errors.mobile && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.mobile
+                                   }</span>
+                               </div>
+                           )}
                         </div>
                     </div>
                 </div>
@@ -29,10 +42,22 @@ const Account : FC = () => {
                         <div className='col-lg-12 fv-row'>
                             <input
                                 type='email'
-                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                                className={clsx(
+                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                    { 'is-invalid': props?.formik.touched.email && props?.formik.errors.email },
+                                    {
+                                        'is-valid': props?.formik.touched.email && !props?.formik.errors.email,
+                                    }
+                                )}
                                 placeholder='Enter Email'
-                                value={`info@abdlwash.com`}
+                                {...props?.formik.getFieldProps('email')}
                             />
+                             {props?.formik.touched.email && props?.formik.errors.email && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.email
+                                   }</span>
+                               </div>
+                           )}
                         </div>
                     </div>
                 </div>
@@ -75,4 +100,4 @@ const Account : FC = () => {
     )    
 }    
 
-export default Account;
+export default memo(Account);

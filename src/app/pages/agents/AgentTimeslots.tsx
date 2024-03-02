@@ -1,7 +1,19 @@
-import {FC} from 'react';
+import {FC , useState, useEffect} from 'react';
 import { PageTitle } from '../../../_metronic/layout/core';
+import { getRequest } from '../../modules/auth/core/_requests';
+import { useParams } from 'react-router-dom';
 
 const AgentTimeslots : FC = () => {
+
+    let date = new Date().toISOString().slice(0, 10);
+
+    const [rowData, setRowData] = useState([]);
+    const [amSessions, setAmSessions] = useState([]);
+    const [pmSessions, setPmSessions] = useState([]);
+    const [filterDate, setFilterDate] = useState(date);
+    const [dayName, setDayName] = useState(new Date().toLocaleDateString('en-us', { weekday: 'long' }));
+
+    const {agentId} = useParams();
     
     const GetDates = ()  => {
         var aryDates = [];
@@ -37,7 +49,36 @@ const AgentTimeslots : FC = () => {
         return weekdays[dayIndex];
     }
 
-    console.log(GetDates())
+    const getData = async (filterDate: any) => {
+        const timeslotData = await getRequest(`/agents/timeslots/${agentId}`,`?date=${filterDate}&day=${dayName}`);
+
+        const lookupObj = [timeslotData];
+        let data1:Array<any>=[];
+        return Promise.allSettled(lookupObj)
+        .then((result) => {
+            result.forEach((res: any) => { 
+                data1.push(res.value);
+            })
+            return data1;
+        })
+        .then((d) =>  {
+            const dataobj = {
+                timeslotData : d[0]?.data?.status === 'ok' ? d[0]?.data : [] ,
+            }
+            setRowData(dataobj?.timeslotData?.data);
+            setAmSessions(dataobj?.timeslotData?.data.filter((i : any) =>i?.session === 'AM'));
+            setPmSessions(dataobj?.timeslotData?.data.filter((i : any) =>i?.session === 'PM'));
+        })
+
+    }
+
+
+    useEffect(() => {
+        async function fetchData() {
+            await getData(filterDate);
+        }
+        fetchData()
+    }, [filterDate])
    
 
     return (
@@ -60,23 +101,15 @@ const AgentTimeslots : FC = () => {
 
 
             <div className="d-flex flex-wrap mb-8">
+
+  
                 <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                     <div className="d-flex align-items-center">
                         <div className="fs-2 fw-bolder">09:00 AM</div>
                     </div>
-                </div>
-                
-                <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
-                    <div className="d-flex align-items-center">
-                        <div className="fs-2 fw-bolder">10:00 AM</div>
-                    </div>
-                </div>
+                </div> 
+                 
 
-                <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
-                    <div className="d-flex align-items-center">
-                        <div className="fs-2 fw-bolder">11:00 AM</div>
-                    </div>
-                </div>
             </div>
 
 
@@ -92,17 +125,6 @@ const AgentTimeslots : FC = () => {
                     </div>
                 </div>
                 
-                <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
-                    <div className="d-flex align-items-center">
-                        <div className="fs-2 fw-bolder">04:00 PM</div>
-                    </div>
-                </div>
-
-                <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
-                    <div className="d-flex align-items-center">
-                        <div className="fs-2 fw-bolder">05:00 PM</div>
-                    </div>
-                </div>
             </div>
 
         </>

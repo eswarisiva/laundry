@@ -125,18 +125,18 @@ const PrivateRoutes = () => {
           <Route path='settings/tax/:taxId' element={<TaxDetail />} />
           <Route path='settings/currencyRates' element={<CurrencyRates />} />
           <Route path='agent/list' element={<AgentList />} />
-          <Route path='agent/profile' element={<AgentProfile />} />
-          <Route path='agent/locationCharges' element={<LocationCharges />} />
-          <Route path='agent/users' element={<AgentUsers />} />
-          <Route path='agent/user' element={<AgentUserDetail />} />
-          <Route path='agent' element={<AgentUpdate />} />
-          <Route path='agent/wallet' element={<AgentWallet />} />
-          <Route path='agent/stats' element={<AgentStatistics />} />
-          <Route path='agent/orders' element={<AgentOrders />} />
-          <Route path='agent/items' element={<AgentItems />} />
-          <Route path='agent/subscriptions' element={<AgentSubscriptions />} />
-          <Route path='agent/timeslots' element={<AgentTimeslots />} />
-          <Route path='agent/ratings' element={<AgentRatings />} />
+          <Route path='agent/:agentId/profile' element={<AgentProfile />} />
+          <Route path='agent/:agentId/locationCharges' element={<LocationCharges />} />
+          <Route path='agent/:agentId/users' element={<AgentUsers />} />
+          <Route path='agent/user/:agentId/:userId' element={<AgentUserDetail />} />
+          <Route path='agent/:agentId' element={<AgentUpdate />} />
+          <Route path='agent/:agentId/wallet' element={<AgentWallet />} />
+          <Route path='agent/:agentId/stats' element={<AgentStatistics />} />
+          <Route path='agent/:agentId/orders' element={<AgentOrders />} />
+          <Route path='agent/:agentId/items' element={<AgentItems />} />
+          <Route path='agent/:agentId/subscriptions' element={<AgentSubscriptions />} />
+          <Route path='agent/:agentId/timeslots' element={<AgentTimeslots />} />
+          <Route path='agent/:agentId/ratings' element={<AgentRatings />} />
           <Route path='customer/list' element={<CustomerList />} />
           <Route path='customer/profile' element={<CustomerProfile />} />
           <Route path='customer/account' element={<CustomerAccount />} />

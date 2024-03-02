@@ -61,6 +61,18 @@ export function postRequest (URL: string, reqBody: any | null) {
     });
 }
 
+export function getRequest (URL: string, QUERY : string) {
+  const token = localStorage.getItem('token');
+  return axios.get(API_URL+URL+QUERY, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+      }
+    ).then((response : any) => {
+      return response;
+    });
+}
+
 export function patchRequest (URL: string, reqBody: any | null) {
   const token = localStorage.getItem('token');
   return axios.patch(API_URL+URL, reqBody, {

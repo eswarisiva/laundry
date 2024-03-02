@@ -1,6 +1,6 @@
-import {FC} from 'react';
+import React, {memo}  from 'react';
 
-const Company : FC = () => {
+const Company  = (props:any) => {
    return (
     <>
            <div className='row mb-12'>
@@ -13,7 +13,8 @@ const Company : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Company Name'
-                               value='Abd al-Uzza'
+                               {...props?.formik.getFieldProps('companyName')}
+                                              
                            />
                        </div>
                    </div>
@@ -30,7 +31,7 @@ const Company : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Owner Name'
-                               value='Abdul'
+                               {...props?.formik.getFieldProps('ownerName')}
                            />
                        </div>
                    </div>
@@ -43,7 +44,9 @@ const Company : FC = () => {
                <div className='row col-lg-8'>
                <div className='col-lg-4'>
                    <div className="form-check form-check-custom form-check-solid">
-                       <input className="form-check-input" type="radio" checked={true} id="flexRadioDefault" />
+                       <input className="form-check-input" type="radio"
+                        {...props?.formik.getFieldProps('haveTax')}
+                       checked={true} id="flexRadioDefault" />
                        <label className="form-check-label" >
                        Yes
                        </label>
@@ -51,7 +54,7 @@ const Company : FC = () => {
                 </div>   
                 <div className='col-lg-4'>
                    <div className="form-check form-check-custom form-check-solid">
-                       <input className="form-check-input" type="radio" value="" id="flexRadioDefault" />
+                       <input className="form-check-input" type="radio" {...props?.formik.getFieldProps('haveTax')} id="flexRadioDefault" />
                        <label className="form-check-label" >
                            No
                        </label>
@@ -96,4 +99,4 @@ const Company : FC = () => {
    ) 
 }
 
-export default Company;
+export default memo(Company);

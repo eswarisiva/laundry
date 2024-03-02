@@ -1,6 +1,7 @@
-import {FC} from 'react';
+import React, {memo} from 'react';
+import clsx from 'clsx';
 
-const Address : FC = () => {
+const Address = (props:any)  => {
    return (
       <>
            <div className='row mb-12'>
@@ -11,10 +12,22 @@ const Address : FC = () => {
                        <div className='col-lg-12 fv-row'>
                            <input
                                type='text'
-                               className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
+                               className={clsx(
+                                   'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                   { 'is-invalid': props?.formik.touched.street && props?.formik.errors.street },
+                                   {
+                                       'is-valid': props?.formik.touched.street && !props?.formik.errors.street,
+                                   }
+                               )}
                                placeholder='Enter No & Street/Road'
-                               value={`No.43 a`}
+                               {...props?.formik.getFieldProps('street')}
                            />
+                           {props?.formik.touched.street && props?.formik.errors.street && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.street
+                                   }</span>
+                               </div>
+                           )}
                        </div>
                    </div>
                </div>
@@ -30,7 +43,7 @@ const Address : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Apartment, Building, Flat'
-                               value={`Abdul Rahmin Complex`}
+                               {...props?.formik.getFieldProps('building')}
                            />
                        </div>
                    </div>
@@ -43,13 +56,30 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select value={`Diplomatic Area`}
-                               className='form-select form-select-solid form-select-lg fw-bold'
+                           <select 
+                                 className={clsx(
+                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                    {'is-invalid': props?.formik.touched.areaId && props?.formik.errors.areaId},
+                                    {
+                                      'is-valid': props?.formik.touched.areaId && !props?.formik.errors.areaId,
+                                    }
+                                  )}
+                                  {...props?.formik.getFieldProps('areaId')}
                            >
+                               
                                <option value=''>Select Area...</option>
-                               <option value='Diplomatic Area'>Diplomatic Area</option>
-                               <option value='Area'>Area</option>
+                               {
+                                   props?.areaList.map((e: any) => {
+                                       return <option value={e._id}>{e.name}</option>
+                                   })}
                            </select>
+
+                           {props?.formik.touched.areaId && props?.formik.errors.areaId && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.areaId
+                                   }</span>
+                               </div>
+                           )}
                        </div>
                    </div>
                </div>
@@ -62,13 +92,28 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select value={`Bahrain`}
-                               className='form-select form-select-solid form-select-lg fw-bold'
+                           <select 
+                               {...props?.formik.getFieldProps('countryId')}
+                               className={clsx(
+                                'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                {'is-invalid': props?.formik.touched.countryId && props?.formik.errors.countryId},
+                                {
+                                  'is-valid': props?.formik.touched.countryId && !props?.formik.errors.countryId,
+                                }
+                              )}
                            >
                                <option value=''>Select Country...</option>
-                               <option value='Bahrain'>Bahrain</option>
-                               <option value='Country'>Country</option>
+                               {
+                                   props?.countryList.map((e: any) => {
+                                       return <option value={e._id}>{e.name}</option>
+                                   })}
                            </select>
+                           {props?.formik.touched.countryId && props?.formik.errors.countryId && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.countryId
+                                   }</span>
+                               </div>
+                           )}
                        </div>
                    </div>
                </div>
@@ -81,12 +126,27 @@ const Address : FC = () => {
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
                            <select 
-                               className='form-select form-select-solid form-select-lg fw-bold'
+                               {...props?.formik.getFieldProps('stateId')}
+                               className={clsx(
+                                'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                {'is-invalid': props?.formik.touched.stateId && props?.formik.errors.stateId},
+                                {
+                                  'is-valid': props?.formik.touched.stateId && !props?.formik.errors.stateId,
+                                }
+                              )}
                            >
                                <option value=''>Select State...</option>
-                               <option value='Country'>State</option>
-                               <option value='Country'>State</option>
+                               {
+                                   props?.stateList.map((e: any) => {
+                                       return <option value={e._id}>{e.name}</option>
+                                   })}
                            </select>
+                           {props?.formik.touched.stateId && props?.formik.errors.stateId && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.stateId
+                                   }</span>
+                               </div>
+                           )}
                        </div>
                    </div>
                </div>
@@ -98,13 +158,27 @@ const Address : FC = () => {
                <div className='col-lg-8'>
                    <div className='row'>
                        <div className='col-lg-9 fv-row'>
-                           <select value={`Manama`}
-                               className='form-select form-select-solid form-select-lg fw-bold'
+                           <select  {...props?.formik.getFieldProps('cityId')}
+                                className={clsx(
+                                    'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
+                                    {'is-invalid': props?.formik.touched.cityId && props?.formik.errors.cityId},
+                                    {
+                                      'is-valid': props?.formik.touched.cityId && !props?.formik.errors.cityId,
+                                    }
+                                  )}
                            >
                                <option value=''>Select City...</option>
-                               <option value='Manama'>Manama</option>
-                               <option value='Country'>City</option>
+                               {
+                                   props?.cityList.map((e: any) => {
+                                       return <option value={e._id}>{e.name}</option>
+                                   })}
                            </select>
+                           {props?.formik.touched.cityId && props?.formik.errors.cityId && (
+                               <div style={{ color: 'red' }} className='fv-plugins-message-container'>
+                                   <span role='alert'>{props?.formik.errors.cityId
+                                   }</span>
+                               </div>
+                           )}
                        </div>
                    </div>
                </div>
@@ -115,4 +189,4 @@ const Address : FC = () => {
     ) 
 }
 
-export default Address;
+export default memo(Address);

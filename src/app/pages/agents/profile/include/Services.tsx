@@ -1,6 +1,6 @@
-import {FC} from 'react';
+import React, {memo} from 'react';
 
-const Services : FC = () => {
+const Services = (props:any)  => {
     return (
         <>
            
@@ -11,7 +11,16 @@ const Services : FC = () => {
                        <div className='col-lg-12 fv-row'>
                             <div className="mb-10">
                                 <div className="form-check form-switch form-check-custom form-check-solid">
-                                    <input checked={true} className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                                    <input 
+                                         className='form-check-input'
+                                         type='checkbox'
+                                        //  {...props?.formik.getFieldProps('isDisplayOnHome')}
+                                        //  //checked= {formik.getFieldProps('isDisplayOnHome')}
+                                        //  checked={props?.formik?.values?.isDisplayOnHome}
+                                        //  data-kt-check= {props?.formik.getFieldProps('isDisplayOnHome')}
+                                         data-kt-check-target='.widget-9-check'
+                                        id="flexSwitchDefault"
+                                    />
                                 </div>
                             </div>
                        </div>
@@ -27,7 +36,15 @@ const Services : FC = () => {
                    <div className='col-lg-4'>
                          <div className="mb-10">
                             <div className="form-check form-check-custom form-check-solid">
-                                <input className="form-check-input" checked={true} type="checkbox" value="" id="flexCheckDefault"/>
+                                <input
+                                    className='form-check-input'
+                                    type='checkbox'
+                                    {...props?.formik.getFieldProps('pos')}
+                                    checked={props?.formik?.values?.pos}
+                                    data-kt-check={props?.formik.getFieldProps('pos')}
+                                    data-kt-check-target='.widget-9-check'
+                                    id="flexSwitchDefault"
+                                />
                                 <label className="form-check-label">
                                     POS
                                 </label>
@@ -36,7 +53,15 @@ const Services : FC = () => {
                     </div>   
                     <div className='col-lg-4'>
                     <div className="form-check form-check-custom form-check-solid">
-                        <input className="form-check-input" type="checkbox" checked={true} value="" id="flexRadioDefault" />
+                            <input
+                                className='form-check-input'
+                                type='checkbox'
+                                {...props?.formik.getFieldProps('online')}
+                                checked={props?.formik?.values?.online}
+                                data-kt-check={props?.formik.getFieldProps('online')}
+                                data-kt-check-target='.widget-9-check'
+                                id="flexSwitchDefault"
+                            />
                         <label className="form-check-label" >
                             Online
                         </label>
@@ -52,7 +77,14 @@ const Services : FC = () => {
                        <div className='col-lg-12 fv-row'>
                             <div className="mb-10">
                                 <div className="form-check form-switch form-check-custom form-check-solid">
-                                    <input className="form-check-input" checked={true} type="checkbox" value="" id="flexSwitchDefault" />
+                                    <input 
+                                      className='form-check-input'
+                                      type='checkbox'
+                                      {...props?.formik.getFieldProps('logistics')}
+                                      checked={props?.formik?.values?.logistics}
+                                      data-kt-check={props?.formik.getFieldProps('logistics')}
+                                      data-kt-check-target='.widget-9-check'
+                                    />
                                     <label className="form-check-label">
                                         (M Logistic applicable for online service if enabled)
                                     </label>
@@ -66,4 +98,4 @@ const Services : FC = () => {
     )
 }
 
-export default Services;
+export default memo(Services);

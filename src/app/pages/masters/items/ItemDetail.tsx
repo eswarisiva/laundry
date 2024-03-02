@@ -18,7 +18,7 @@ const itemSchema = Yup.object().shape({
       .required('Service is required'), 
     categoryId : Yup.string()
       .required('Category is required'), 
-    icon : Yup.mixed()
+    productImageURL : Yup.mixed()
        .required('Icon is required'),   
 })
 
@@ -34,7 +34,7 @@ const ItemDetail : FC = () => {
     const initialValues = {
         productName: '',
         shortDesc: '',
-        icon: '',
+        productImageURL: '',
         serviceId: '',
         categoryId: ''
     }
@@ -61,8 +61,9 @@ const ItemDetail : FC = () => {
                 serviceId: values?.serviceId,
                 categoryId: values?.categoryId,
             }
+            console.log(values);
             const formData = new FormData();
-            formData.append("icon", values?.icon);
+            formData.append("productImageURL", values?.productImageURL);
             formData.append("data", JSON.stringify(dataObj));
 
           try {
@@ -133,7 +134,7 @@ const ItemDetail : FC = () => {
                     categoryId:  dataobj?.itemData?.categoryId,
                     serviceId:  dataobj?.itemData?.serviceId,
                     shortDesc:  dataobj?.itemData?.shortDesc,
-                    icon:  dataobj?.itemData?.icon,
+                    productImageURL:  dataobj?.itemData?.productImageURL,
                }
                 setFormData(initialValues);
             }
@@ -265,19 +266,19 @@ const ItemDetail : FC = () => {
                                             <input
                                                 type='file'
                                                 accept="image/*"
-                                                {...formik.getFieldProps('icon')}
+                                                {...formik.getFieldProps('productImageURL')}
                                                 className={clsx(
                                                     'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
-                                                    { 'is-invalid': formik.touched.icon && formik.errors.icon },
+                                                    { 'is-invalid': formik.touched.productImageURL && formik.errors.productImageURL },
                                                     {
-                                                        'is-valid': formik.touched.icon && !formik.errors.icon,
+                                                        'is-valid': formik.touched.productImageURL && !formik.errors.productImageURL,
                                                     }
                                                 )}
                                                 placeholder='Icon / Image'
                                             />
-                                            {formik.touched.icon && formik.errors.icon && (
+                                            {formik.touched.productImageURL && formik.errors.productImageURL && (
                                                 <div style={{ color: 'red' }} className='fv-plugins-message-container'>
-                                                    <span role='alert'>{formik.errors.icon
+                                                    <span role='alert'>{formik.errors.productImageURL
                                                     }</span>
                                                 </div>
                                             )}
