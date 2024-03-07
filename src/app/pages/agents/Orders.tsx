@@ -1,7 +1,47 @@
-import {FC} from 'react';
+import {FC, useState, useEffect} from 'react';
 import { PageTitle } from '../../../_metronic/layout/core';
+import { postRequest } from '../../modules/auth/core/_requests';
+import { stringToDate } from '../../../common/Date'; 
+import { useParams } from 'react-router-dom';
 
 const AgentOrders : FC = () => {
+
+    const [rowData, setRowData] = useState([]);
+    const [page, setPage] = useState(0);
+    const [total, setTotal] = useState(0);
+    const pageSize = 10;
+    const {agentId} = useParams();
+
+    const getData = async () => {
+        const orderData = await postRequest(`/agents/orders/${agentId}?pageIndex=${page}&pageSize=${pageSize}`,``);
+
+        const lookupObj = [orderData];
+        let data1:Array<any>=[];
+        return Promise.allSettled(lookupObj)
+        .then((result) => {
+            result.forEach((res: any) => { 
+                data1.push(res.value);
+            })
+            return data1;
+        })
+        .then((d) =>  {
+            const dataobj = {
+                orderData : d[0]?.data?.status === 'ok' ? d[0]?.data?.data : [] ,
+            }
+            setRowData(dataobj?.orderData);
+            setTotal(dataobj?.orderData?.totalCount);
+        })
+
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            await getData();
+        }
+        fetchData()
+    }, [])
+
+
     return (
         <>
          <PageTitle>ORDERS</PageTitle>
@@ -32,19 +72,30 @@ const AgentOrders : FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>dd/mm/yy</td>
-                                    <td>ORD001</td>
-                                    <td>Name</td>
-                                    <td>Agent</td>
-                                    <td>3</td>
-                                    <td>POS</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>Success</td>
-                                    <td>Success</td>
-                                    <td>View</td>
-                                </tr>
+
+                                    {
+                                        rowData?.length > 0 ?
+                                            rowData.map((result: any) => {
+
+                                                return (
+                                                    <tr key={result?._id}>
+                                                        <td>{stringToDate(result?.orderDate)}</td>
+                                                        <td>{result?.orderNo}</td>
+                                                        <td>{result?.customerId?.firstName + " " + result?.customerId?.lastName}</td>
+                                                        <td>Agent</td>
+                                                        <td>{result?.qty}</td>
+                                                        <td>{result?.orderMode}</td>
+                                                        <td>{result?.isHomePickup ? 'YES' : 'NO'}</td>
+                                                        <td>{result?.isHomeDelivery ? 'YES' : 'NO'}</td>
+                                                        <td>{result?.paymentStatus}</td>
+                                                        <td>{result?.orderStatus}</td>
+                                                        <td>View</td>
+                                                    </tr>
+                                                )
+                                            })
+                                            :
+                                            <tr><td>No Orders Found</td></tr>
+                                    }
                             </tbody>
                         </table>
                     </div>

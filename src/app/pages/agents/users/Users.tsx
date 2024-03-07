@@ -18,9 +18,9 @@ const AgentUsers : FC = () => {
     const {agentId} = useParams();
 
     const getData = async () => {
-        const countryData = await getRequest(`/agents/users/list/${agentId}`,`?pageIndex=${page}&pageSize=${pageSize}`);
+        const userData = await getRequest(`/agents/users/list/${agentId}`,`?pageIndex=${page}&pageSize=${pageSize}`);
 
-        const lookupObj = [countryData];
+        const lookupObj = [userData];
         let data1:Array<any>=[];
         return Promise.allSettled(lookupObj)
         .then((result) => {
@@ -91,7 +91,9 @@ const AgentUsers : FC = () => {
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td>{result?.name}</td>
+                                                        <td>  <Link   to={`/agent/user/${agentId}/${result?._id}`} >
+                                                            {result?.name}
+                                                            </Link> </td>
                                                         <td>{result?.email}</td>
                                                         <td>{result?.userName}</td>
                                                         <td>{result?.role?.roleName}</td>

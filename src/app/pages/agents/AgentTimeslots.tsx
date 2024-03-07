@@ -25,12 +25,12 @@ const AgentTimeslots : FC = () => {
                 txt = 'st';
             } else if(i >= 1 && i <= 2){
                 txt = 'nd';
-            } else {
+            }  else {
                 txt = 'th';
             }
             var currentDate = new Date();
             currentDate.setDate(startDate.getDate() + i);
-            aryDates.push(`${currentDate.getDate()}${txt} ${currentDate.toLocaleString('default', { month: 'short' })}, ${DayAsString(currentDate.getDay())} `);
+            aryDates.push({ value: `${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}` , label: `${currentDate.getDate()}${txt} ${currentDate.toLocaleString('default', { month: 'short' })}, ${DayAsString(currentDate.getDay()) } ` });
         }
     
         return aryDates;
@@ -47,6 +47,12 @@ const AgentTimeslots : FC = () => {
         weekdays[6] = "Saturday";
     
         return weekdays[dayIndex];
+    }
+
+    const fetchResults = (data: any) => {
+        console.log(data?.value)
+       setFilterDate(data?.value);
+       setDayName(new Date(data?.value).toLocaleDateString('en-us', { weekday: 'long' }))
     }
 
     const getData = async (filterDate: any) => {
@@ -88,8 +94,8 @@ const AgentTimeslots : FC = () => {
             <div className='row g-6 g-xl-9 mb-8'>
             {
                 GetDates().map((date) => {
-                    return <div className='bg-light-warning' style={{width: '120px', textAlign: 'center', marginRight: '15px' , padding: '10px'}}>
-                                {date}
+                    return <div onClick={() => fetchResults(date)} className='bg-light-warning' style={{width: '120px', textAlign: 'center', marginRight: '15px' , padding: '10px', cursor: 'pointer'}}>
+                                {date?.label}
                         </div>
                 })
             }
@@ -102,12 +108,20 @@ const AgentTimeslots : FC = () => {
 
             <div className="d-flex flex-wrap mb-8">
 
-  
+            { 
+                                 amSessions?.length > 0 ?   
+                                 amSessions.map((result : any) => { 
+
+                                    return  (
                 <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                     <div className="d-flex align-items-center">
-                        <div className="fs-2 fw-bolder">09:00 AM</div>
+                        <div className="fs-2 fw-bolder">{result?.label}</div>
                     </div>
                 </div> 
+                                    )
+                                 })
+                :  `No Slots Available`
+                                }
                  
 
             </div>
@@ -119,11 +133,21 @@ const AgentTimeslots : FC = () => {
 
 
             <div className="d-flex flex-wrap">
+
+            { 
+                                 pmSessions?.length > 0 ?   
+                                 pmSessions.map((result : any) => { 
+
+                                    return  (
                 <div className="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                     <div className="d-flex align-items-center">
-                        <div className="fs-2 fw-bolder">12:00 PM</div>
+                        <div className="fs-2 fw-bolder">{result?.label}</div>
                     </div>
                 </div>
+                    )
+                })
+:  `No Slots Available`
+               }
                 
             </div>
 

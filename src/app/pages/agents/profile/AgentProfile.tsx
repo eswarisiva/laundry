@@ -142,7 +142,7 @@ const AgentProfile : FC = () => {
           companyData: d[0]?.data?.status === 'ok' ? d[0]?.data?.data : {},
           addressData: d[1]?.data?.status === 'ok' ? d[1]?.data?.data : {},
           servicesData: d[2]?.data?.status === 'ok' ? d[2]?.data?.data : {},
-          hoursData: d[3]?.data?.status === 'ok' ? d[3]?.data?.data: {},
+          hoursData: d[3]?.data?.status === 'ok' ? d[3]?.data?.data: [],
           accountData: d[4]?.data?.status === 'ok' ? d[4]?.data?.data : {},
           countryData: d[5]?.data?.status === 'ok' ? d[5]?.data?.data : [] ,
           stateData: d[6]?.data?.status === 'ok' ? d[6]?.data?.data : [],
@@ -154,7 +154,7 @@ const AgentProfile : FC = () => {
         setCityList(dataobj?.cityData);
         setAreaList(dataobj?.areaData);
         // setServices(dataobj?.servicesData?.data);
-        // setWorkingHours(dataobj?.hoursData?.data);
+        setWorkingHours(dataobj?.hoursData);
         // setAccount(dataobj?.accountData?.data);
         const initialValues = {
           companyName: dataobj?.companyData?.companyName,
@@ -183,7 +183,6 @@ const AgentProfile : FC = () => {
       })
 
   }  
-
 
   useEffect(() => {
     async function fetchData() {
@@ -246,7 +245,7 @@ const AgentProfile : FC = () => {
             }
             {steps === 4 &&
               <div className='row g-5 g-xl-8'>
-                <Working />
+                <Working workingHours={workingHours} />
               </div>
             }
             {steps === 5 &&

@@ -1,7 +1,9 @@
-import {FC} from 'react';
+import React from 'react';
 
 
-const PersonalDetail : FC = () => {
+const PersonalDetail = (props: any) => {
+
+    console.log(props?.formik)
    return (
     <>
            <div className='row mb-12'>
@@ -14,6 +16,7 @@ const PersonalDetail : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Name'
+                               {...props?.formik.getFieldProps('name')}
                            />
                        </div>
                    </div>
@@ -31,6 +34,7 @@ const PersonalDetail : FC = () => {
                                type='email'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Email'
+                               {...props?.formik.getFieldProps('email')}
                            />
                        </div>
                    </div>
@@ -47,6 +51,7 @@ const PersonalDetail : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Username'
+                               {...props?.formik.getFieldProps('userName')}
                            />
                        </div>
                    </div>
@@ -98,6 +103,7 @@ const PersonalDetail : FC = () => {
                                type='text'
                                className='form-control form-control-lg form-control-solid mb-3 mb-lg-0'
                                placeholder='Enter Mobile Number'
+                               {...props?.formik.getFieldProps('mobile')}
                            />
                        </div>
                    </div>
@@ -111,7 +117,14 @@ const PersonalDetail : FC = () => {
                    <div className='col-lg-12 fv-row'>
                        <div className="mb-10">
                            <div className="form-check form-switch form-check-custom form-check-solid">
-                               <input className="form-check-input" type="checkbox" value="" id="flexSwitchDefault" />
+                               <input 
+                                className="form-check-input"
+                                type="checkbox" 
+                                id="flexSwitchDefault"
+                                {...props?.formik.getFieldProps('status')}
+                                data-kt-check={props?.formik.getFieldProps('status')}
+                                //checked={props?.formik.getFieldProps('status')}
+                                />
                                <label className="form-check-label">
                                    (Inactive/Active)
                                </label>

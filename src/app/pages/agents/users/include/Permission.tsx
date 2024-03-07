@@ -1,6 +1,7 @@
-import {FC} from 'react';
 
-const Permission : FC = () => {
+const Permission = (props: any) => {
+
+   console.log(props?.permission)
    return (
     <>
          <div className='table-responsive'>
